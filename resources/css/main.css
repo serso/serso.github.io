@@ -1,0 +1,72 @@
+body {
+	background: white;
+	text-align: center;
+}
+
+div#se_solovyev_img {
+	text-align: center;
+	padding: 0 0 0 0;
+	margin: 0 0 0 0;
+}
+
+.nohover a:hover {
+	background-color: transparent;
+}
+
+a {
+   outline: 0;
+}
+
+div#header {
+	height:10px;
+}
+
+div#se_solovyev {
+	font-size: 80pt;
+	letter-spacing: -10px;
+	background: white url("../images/coffee_stain.jpg") no-repeat 80%;
+	border: 0;
+}
+
+.s_0 {
+	font-family: "Ume Gothic S5", sans-serif;
+}
+
+.e_0 {
+	font-family: "Arial Black", serif;
+}
+
+.dot {
+}
+
+.s_1 {
+	font-family: "Liberation Mono", monospace;
+}
+
+.o_0 {
+	font-family: "FreeMono", monospace;
+}
+
+.l {
+	font-family: "Arial Black", serif;
+}
+
+.o_1 {
+	font-family: "Loma", serif;
+}
+
+.v_0 {
+	font-family: "Purisa", serif;
+}
+
+.y {
+	font-family: "Arial Black", serif;
+}
+
+.e_1 {
+	font-family: "URW Chancery L", serif;
+}
+
+.v_1 {
+	font-family: "URW Gothic L", sans-serif;
+}
