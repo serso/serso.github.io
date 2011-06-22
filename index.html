@@ -6,6 +6,38 @@
 
 	<script type="text/javascript" src="resources/js/jquery-1.6.1.js"></script>
 
+	<script type="text/javascript">
+		$(document).ready(function() {
+
+			$(".slided_content").hide();
+
+			$("a.slided").click(
+					function(event) {
+
+						// Prevent the default event.
+						event.preventDefault();
+
+
+						var nextSibling = $(this).next();
+
+						// Toggle the slide based on its current
+						// visibility.
+						if (nextSibling.is(":visible")) {
+
+							// Hide - slide up.
+							nextSibling.slideUp(500);
+
+						} else {
+
+							// Show - slide down.
+							nextSibling.slideDown(500);
+
+						}
+					}
+					);
+		});
+	</script>
+
 	<link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Crimson+Text:regular,600&v1' type='text/css'>
 
 	<link rel="stylesheet" href="resources/css/main.css" type="text/css"/>
@@ -15,227 +47,320 @@
 <body>
 
 <div id="page">
-	<div id="container">
-		<div id="header">
-			<div id="se_solovyev_img">
-				<a href="/" class="nohover">
-					<img src="resources/images/header.png" alt="se.solovyev" height="202" width="879" border="0">
-				</a>
-			</div>
-		</div>
-		<div id="center">
-			<div id="content">
-				<h2>Personal information</h2>
-
-				<div class="left">
-
-					<dl>
-						<dt>Name, Last Name</dt>
-						<dd>Sergey Solovyev</dd>
-					</dl>
-
-					<dl>
-						<dt>Also know as</dt>
-						<dd>serso, se.solovyev</dd>
-					</dl>
-
-					<dl>
-						<dt>Age</dt>
-						<dd>23 (born on the 9th of March 1988)</dd>
-					</dl>
-
-					<dl>
-						<dt>Sex</dt>
-						<dd>Male</dd>
-					</dl>
-
-					<dl>
-						<dt>From</dt>
-						<dd><a href="http://maps.google.ru/maps?q=Sankt-Peterburg,+St+Petersburg&hl=ru&sll=59.939039,30.315785&sspn=1.417131,5.410767&t=h&z=8">St. Petersburg</a>, <a href="http://maps.google.ru/maps?q=Russia&hl=ru&sll=55.354135,40.297852&sspn=25.953813,86.572266&t=h&z=2">Russia</a></dd>
-					</dl>
-
-					<dl>
-						<dt>Interested in</dt>
-						<dd>Programming, music, sport,<br/>travelling, reading</dd>
-					</dl>
-
-					<dl>
-						<dt>Peculiarity</dt>
-						<dd>Hardworking, easy studying, enthusiastic</dd>
-					</dl>
-
-					<dl>
-						<dt><img src="resources/images/facebook-logo-sm.png" alt="facebook-logo" height="20px"></dt>
-						<dd><a href="http://www.facebook.com/se.solovyev">http://www.facebook.com/se.solovyev</a></dd>
-					</dl>
-
-					<dl>
-						<dt><img src="resources/images/vkontakte-logo-sm.png" alt="vkontakte-logo" height="20px"></dt>
-						<dd><a href="http://www.vk.com/se.solovyev">http://www.vk.com/se.solovyev</a></dd>
-					</dl>
-
-					<dl>
-						<dt><img src="resources/images/github-logo-xsm.png" alt="github-logo"></dt>
-						<dd><a href="http://github.com/serso">http://github.com/serso</a></dd>
-					</dl>
-				</div>
-
-				<div id="face" class="right">
-					<img src="resources/images/face.png" alt="Face">
-				</div>
-
-				<h2>Education</h2>
-
-				<h3>University</h3>
-
-				<div class="left">
-
-					<dl>
-						<dt>University</dt>
-						<dd><a href="http://www.spbstu-eng.ru">St.Petersburg State Polytechnic University</a></dd>
-					</dl>
-
-					<dl>
-						<dt>Department</dt>
-						<dd><a href="http://www.physmech.ru">Physics and Mechanics</a></dd>
-					</dl>
-
-					<dl>
-						<dt>Major</dt>
-						<dd><a href="http://amd.stu.neva.ru">Applied mathematics and computer science</a></dd>
-					</dl>
-
-					<dl>
-						<dt></dt>
-						<dd>2005 - 2011 (graduating in September 2011)</dd>
-					</dl>
-
-				</div>
-
-				<h3>School</h3>
-
-				<div class="left">
-
-					<dl>
-						<dt>School</dt>
-						<dd>№ 38, St. Petersburg</dd>
-					</dl>
-
-					<dl>
-						<dt></dt>
-						<dd>1995 - 2005</dd>
-					</dl>
-
-				</div>
-
-				<h2>Work</h2>
-
-				<div class="left">
-
-					<dl>
-						<dt>Company</dt>
-						<dd><a href="http://www.short.ch">Short SPb</a></dd>
-					</dl>
-
-					<dl>
-						<dt></dt>
-						<dd>2008 - present time</dd>
-					</dl>
-
-					<dl>
-						<dt>Field</dt>
-						<dd>Front-end and back office solutions for banks and insurance companies</dd>
-					</dl>
-
-					<dl>
-						<dt>Position</dt>
-						<dd>Software Developer</dd>
-					</dl>
-
-					<dl>
-						<dt>Details</dt>
-						<dd>
-							<ol>
-								<li>Working on a Maven project with +7000 classes </li>
-								<li>Maintaining and extending functionality of own MVC framework (Struts like)</li>
-								<li>Creating persistence layer:
-									<ul>
-										<li>
-											Oracle database knowledge (ver. > 9)
-										</li>
-										<li>
-											Writing stored procedures for Oracle
-										</li>
-										<li>
-											Using ODBC specific features
-										</li>
-									</ul>
-								</li>
-								<li>
-									Developing model layer
-								</li>
-								<li>Developing user interface elements containing:
-									<ul>
-										<li>
-											Jsps with velocity templates
-										</li>
-										<li>
-											Custom tag libraries
-										</li>
-										<li>
-											JavaScript objects
-										</li>
-										<li>
-											GWT(Ext-GWT) modules
-										</li>
-									</ul>
-								</li>
-								<li>Programming in team using VCS (CVS, Subversion)</li>
-							</ol>
-						</dd>
-					</dl>
-
-					<!--<dl>
-						<dt>Duties</dt>
-						<dd>
-							<ol>
-								<li>Programming </li>
-							</ol>
-						</dd>
-					</dl>-->
-
-				</div>
-
-				<h2>Skills</h2>
-
-				<div class="left"></div>
-
-				<h2>Contacts</h2>
-
-				<dl>
-
-					<dt><img src="resources/images/gmail-logo-sm.png" alt="gmail-logo" height="16px"></dt>
-					<dd><a href="mailto:se.solovyev@gmail.com">se.solovyev@gmail.com</a></dd>
-				</dl>
-
-				<dl>
-					<dt><img src="resources/images/skype-logo-sm.png" alt="skype-logo" height="22px"></dt>
-					<dd><a href="skype:se.solovyev?call">se.solovyev</a></dd>
-				</dl>
-
-				<dl>
-					<dt><img src="resources/images/facebook-logo-sm.png" alt="facebook-logo" height="20px"></dt>
-					<dd><a href="http://www.facebook.com/se.solovyev">http://www.facebook.com/se.solovyev</a></dd>
-				</dl>
-
-				<dl>
-					<dt><img src="resources/images/vkontakte-logo-sm.png" alt="vkontakte-logo" height="20px"></dt>
-					<dd><a href="http://www.vk.com/se.solovyev">http://www.vk.com/se.solovyev</a></dd>
-				</dl>
-
-			</div>
-		</div>
+<div id="container">
+<div id="header">
+	<div id="se_solovyev_img">
+		<a href="/" class="nohover">
+			<img src="resources/images/header.png" alt="se.solovyev" height="202" width="879" border="0">
+		</a>
 	</div>
+</div>
+<div id="center">
+<div id="content">
+<h2>Personal information</h2>
+
+<div class="left">
+
+	<dl>
+		<dt>Name, Last Name</dt>
+		<dd>Sergey Solovyev</dd>
+	</dl>
+
+	<dl>
+		<dt>Also know as</dt>
+		<dd>se.solovyev, serso</dd>
+	</dl>
+
+	<dl>
+		<dt>Age</dt>
+		<dd>23 (born on the 9th of March 1988)</dd>
+	</dl>
+
+	<dl>
+		<dt>Sex</dt>
+		<dd>Male</dd>
+	</dl>
+
+	<dl>
+		<dt>From</dt>
+		<dd>
+			<a href="http://maps.google.com/maps?q=Russian+Federation,+Sankt-Peterburg,+St+Petersburg&hl=en&ll=59.938504,29.267578&spn=1.397925,7.503662&sll=37.0625,-95.677068&sspn=35.357014,86.572266&t=h&z=8">St.
+																																																				  Petersburg,
+																																																				  Russia</a>
+		</dd>
+	</dl>
+
+	<dl>
+		<dt>Interested in</dt>
+		<dd>Programming, music, sport,<br/>travelling, reading</dd>
+	</dl>
+
+	<dl>
+		<dt>Peculiarity</dt>
+		<dd>Hardworking, easy studying, enthusiastic</dd>
+	</dl>
+
+	<dl>
+		<dt><img src="resources/images/facebook-logo-sm.png" alt="facebook-logo" height="20px"></dt>
+		<dd><a href="http://www.facebook.com/se.solovyev">http://www.facebook.com/se.solovyev</a></dd>
+	</dl>
+
+	<dl>
+		<dt><img src="resources/images/vkontakte-logo-sm.png" alt="vkontakte-logo" height="20px"></dt>
+		<dd><a href="http://www.vk.com/se.solovyev">http://www.vk.com/se.solovyev</a></dd>
+	</dl>
+
+	<dl>
+		<dt><img src="resources/images/github-logo-xsm.png" alt="github-logo"></dt>
+		<dd><a href="http://github.com/serso">http://github.com/serso</a></dd>
+	</dl>
+</div>
+
+<div id="face" class="right">
+	<img src="resources/images/face.png" alt="Face">
+</div>
+
+<h2>Education</h2>
+
+<h3>University</h3>
+
+<div class="left">
+
+	<dl>
+		<dt>University</dt>
+		<dd><a href="http://www.spbstu-eng.ru">St.Petersburg State Polytechnic University</a></dd>
+	</dl>
+
+	<dl>
+		<dt>Department</dt>
+		<dd><a href="http://www.physmech.ru">Physics and Mechanics</a></dd>
+	</dl>
+
+	<dl>
+		<dt>Major</dt>
+		<dd><a href="http://amd.stu.neva.ru">Applied mathematics and computer science</a></dd>
+	</dl>
+
+	<dl>
+		<dt></dt>
+		<dd>2005 - 2011 (graduating in September 2011)</dd>
+	</dl>
+
+	<dl>
+		<dt>Science</dt>
+		<dd>Graduation work "Parameter estimation of delay differential equations"</dd>
+	</dl>
+
+</div>
+
+<h3>School</h3>
+
+<div class="left">
+
+	<dl>
+		<dt>School</dt>
+		<dd>№ 38, St. Petersburg</dd>
+	</dl>
+
+	<dl>
+		<dt></dt>
+		<dd>1995 - 2005</dd>
+	</dl>
+
+</div>
+
+<h2>Work</h2>
+
+<div class="left">
+
+	<dl>
+		<dt>Company</dt>
+		<dd><a href="http://www.short.ch">Short SPb</a></dd>
+	</dl>
+
+	<dl>
+		<dt></dt>
+		<dd>2008 - present time</dd>
+	</dl>
+
+	<dl>
+		<dt>Field</dt>
+		<dd>Front-end and back office solutions for banks and insurance companies</dd>
+	</dl>
+
+	<dl>
+		<dt>Position</dt>
+		<dd>Software Developer</dd>
+	</dl>
+
+	<dl>
+		<dt>Details</dt>
+		<dd>
+			<ol>
+				<li>Working on a Maven project with +7000 classes</li>
+				<li>Maintaining and extending functionality of own MVC framework (Struts like)</li>
+				<li>Working with Oracle 10 database including writing complicated SQL queries and stored
+					procedures
+				</li>
+				<li>Tuning and setup of <a href="http://www.caucho.com/resin-3.0">Caucho Resin 3</a> web server</li>
+				<li>Creating product specific business code</li>
+				<li>Working with set of external libraries:
+					<ul>
+						<li><a href="http://logging.apache.org/log4j/">log4j</a></li>
+						<li><a href="http://jaxb.java.net">JAXB (xml serialization)</a></li>
+						<li><a href="http://commons.apache.org">Apache commons (Collections, CLI)</a></li>
+						<li><a href="http://jreform.sourceforge.net">jreform</a></li>
+						<li>
+							<a href="http://www.aspose.com/categories/java-components/aspose.total-for-java/default.aspx">Aspose.Cells,
+																														  Aspose.Words</a>
+						</li>
+						<li><a href="http://code.google.com/webtoolkit">GWT</a>,
+							<a href="http://www.sencha.com/products/extgwt">Ext-GWT</a></li>
+						<li><a href="http://www.junit.org">jUnit 3/4</a></li>
+						<li><a href="http://mockito.org">Mockito</a></li>
+					</ul>
+				</li>
+				<li>Developing user interface elements including:
+					<ul>
+						<li>
+							jsp pages (with velocity templates)
+						</li>
+						<li>
+							custom tag libraries
+						</li>
+						<li>
+							JavaScript scripts and GWT(Ext-GWT) modules
+						</li>
+					</ul>
+				</li>
+				<li>
+					Unit tests support (jUnit 3/4, Mockito)
+				</li>
+				<li>
+					Teaching new employees
+				</li>
+				<li>Programming in team using VCS (CVS, Subversion)</li>
+			</ol>
+		</dd>
+	</dl>
+
+</div>
+
+<h2>Skills</h2>
+
+<div class="left">
+	<dl>
+		<dt>Programming languages</dt>
+		<dd>
+			<ul>
+				<li>
+					<a href="/time.html"><strong>Java</strong> (advanced, 3 years of work experience)</a><br/>
+					<a href="#" class="slided">Source code examples</a>
+
+					<div class="slided_content">
+						<ul>
+							<li><a href="https://github.com/serso/common"><strong>Common module</strong></a> - module
+																											 for common
+																											 classes
+																											 (like
+																											 utils,
+																											 interfaces,
+																											 etc)
+							</li>
+							<li><a href="https://github.com/serso/study"><strong>Study project</strong></a> - JavaEE
+																											project
+																											created for
+																											studying
+																											purposes<br/>
+								<a href="https://github.com/serso/study/blob/master/study-misc/misc/Study%20Project.doc">Study
+																														 project
+																														 documentation</a>
+							</li>
+							<li><a href="https://github.com/serso/study/blob/master/pom.xml">Maven: pom.xml file
+																							 example</a></li>
+							<li>
+								<a href="https://github.com/serso/study/blob/master/study-web/web/WEB-INF/log4j.properties">log4j
+																															configuration</a>
+							</li>
+							<li><strong>Spring framework:</strong>
+								<ul>
+									<li>
+										<a href="https://github.com/serso/study/blob/master/study-web/web/WEB-INF/dispatcher-servlet.xml">Dispatcher
+																																		  servlet
+																																		  configuration</a>
+									</li>
+									<li>
+										<a href="https://github.com/serso/study/blob/master/study-core/src/main/java/org/solovyev/study/controllers/user/UserCreateEditController.java">Controller.
+																																														Example
+																																														1</a>
+									</li>
+									<li>
+										<a href="https://github.com/serso/study/blob/master/study-core/src/main/java/org/solovyev/study/controllers/school/SchoolManagementController.java">Controller.
+																																															Example
+																																															2</a>
+									<li>
+										<a href="https://github.com/serso/study/blob/master/study-core/src/main/java/org/solovyev/study/services/PartnerService.java">Service
+																																									  example</a>
+									</li>
+									<li>
+										<a href="https://github.com/serso/study/blob/master/study-web/web/WEB-INF/security.xml">Security
+																																configuration</a>
+									</li>
+								</ul>
+							</li>
+							<li>
+								<a href="https://github.com/serso/study/blob/master/study-web/web/WEB-INF/jsp/user/management.jsp">Jsp example</a>
+							</li>
+							<li>
+								<strong>Hibernate:</strong>
+								<ul>
+									<li><a href="https://github.com/serso/study/blob/master/study-core/src/main/java/hibernate.cfg.xml">Configuration</a></li>
+									<li><a href="https://github.com/serso/study/blob/master/study-core/src/main/java/org/solovyev/study/model/address/Address.hbt.xml">Entity example</a></li>
+								</ul>
+							</li>
+							<li>
+								Android
+							</li>
+						</ul>
+					</div>
+				</li>
+				<li><strong>C/C++</strong> (basic, only academic experience)</li>
+				<li><strong>Matlab</strong> (normal, used in graduation work)</li>
+				<li><strong>JavaScript</strong> (normal)</li>
+				<li><strong>PHP</strong> (normal, used in home projects)</li>
+			</ul>
+		</dd>
+
+	</dl>
+
+</div>
+
+<h2>Contacts</h2>
+
+<dl>
+
+	<dt><img src="resources/images/gmail-logo-sm.png" alt="gmail-logo" height="16px"></dt>
+	<dd><a href="mailto:se.solovyev@gmail.com">se.solovyev@gmail.com</a></dd>
+</dl>
+
+<dl>
+	<dt><img src="resources/images/skype-logo-sm.png" alt="skype-logo" height="22px"></dt>
+	<dd><a href="skype:se.solovyev?call">se.solovyev</a></dd>
+</dl>
+
+<dl>
+	<dt><img src="resources/images/facebook-logo-sm.png" alt="facebook-logo" height="20px"></dt>
+	<dd><a href="http://www.facebook.com/se.solovyev">http://www.facebook.com/se.solovyev</a></dd>
+</dl>
+
+<dl>
+	<dt><img src="resources/images/vkontakte-logo-sm.png" alt="vkontakte-logo" height="20px"></dt>
+	<dd><a href="http://www.vk.com/se.solovyev">http://www.vk.com/se.solovyev</a></dd>
+</dl>
+
+</div>
+</div>
+</div>
 </div>
 
 </body>

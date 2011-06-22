@@ -37,6 +37,12 @@ a, a:visited {
 	outline: medium none;
 }
 
+a.slided {
+	text-decoration: none;
+	border-width: 0 0 1px 0;
+	border-style: none none dashed none;
+}
+
 div#header {
 	height: 200px;
 }
