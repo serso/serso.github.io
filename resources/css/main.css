@@ -54,6 +54,13 @@ div#se_solovyev {
 	border: 0;
 }
 
+div#footer {
+	clear: both;
+	color: #777777;
+	padding:1em;
+	width: 100%;
+}
+
 #content {
 	width: 880px;
 	margin: auto;
@@ -93,6 +100,11 @@ h1, h2, h3 {
 	padding-top: 0.5em;
 }
 
+h1 {
+	color: #3b1907;
+	font-size: 3em;
+}
+
 h2 {
 	font-size: 2em;
 }
@@ -107,6 +119,10 @@ h2 {
 
 .left {
 	float: left;
+}
+
+.languages_list li.language {
+	margin-bottom: 1em;
 }
 
 #java_exp_countdown {
