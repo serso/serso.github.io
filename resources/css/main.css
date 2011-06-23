@@ -61,6 +61,10 @@ div#footer {
 	width: 100%;
 }
 
+#footer a {
+	color: #777777;
+}
+
 #content {
 	width: 880px;
 	margin: auto;
