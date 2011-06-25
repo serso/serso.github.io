@@ -6,16 +6,28 @@
 
 	<script type="text/javascript" src="resources/js/jquery-1.6.1.js"></script>
 	<script type="text/javascript" src="resources/js/jquery.countdown.package-1.5.9/jquery.countdown.pack.js"></script>
+
 	<script type="text/javascript">
-		$().ready(function() {
-			$('#java_exp_countdown').countdown({since: new Date(2008, 10 - 1, 29)});
-		});
+		if (jQuery) {
+			if ($.countdown) {
+				$().ready(function() {
+					$('#java_exp_countdown').countdown({since: new Date(2008, 10 - 1, 29), format: 'YDHMS'});
+				});
+			}
+		}
 	</script>
 
 	<link rel="stylesheet" href="resources/js/jquery.countdown.package-1.5.9/jquery.countdown.css"/>
 	<link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Crimson+Text:regular,600&v1' type='text/css'>
 
 	<link rel="stylesheet" href="resources/css/main.css" type="text/css"/>
+
+	<style type="text/css">
+		#java_exp_countdown {
+			height: 3.5em;
+			font-size: 1.2em;
+		}
+	</style>
 
 
 </head>

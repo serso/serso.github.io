@@ -5,39 +5,55 @@
 	<title>se.solovyev - CV</title>
 
 	<script type="text/javascript" src="resources/js/jquery-1.6.1.js"></script>
+	<script type="text/javascript" src="resources/js/jquery.countdown.package-1.5.9/jquery.countdown.pack.js"></script>
 
 	<script type="text/javascript">
-		$(document).ready(function() {
+		if (jQuery) {
+			$(document).ready(function() {
 
-			$(".slided_content").hide();
+				$(".slided_content").hide();
 
-			$("a.slided").click(
-					function(event) {
+				$("a.slided").click(
+						function(event) {
 
-						// Prevent the default event.
-						event.preventDefault();
+							// Prevent the default event.
+							event.preventDefault();
 
 
-						var nextSibling = $(this).next();
+							var nextSibling = $(this).next();
 
-						// Toggle the slide based on its current
-						// visibility.
-						if (nextSibling.is(":visible")) {
+							// Toggle the slide based on its current
+							// visibility.
+							if (nextSibling.is(":visible")) {
 
-							// Hide - slide up.
-							nextSibling.slideUp(500);
+								// Hide - slide up.
+								nextSibling.slideUp(500);
 
-						} else {
+							} else {
 
-							// Show - slide down.
-							nextSibling.slideDown(500);
+								// Show - slide down.
+								nextSibling.slideDown(500);
 
+							}
 						}
-					}
-					);
-		});
+						);
+
+				if ($.countdown) {
+					$('#java_exp_countdown').countdown(
+					{	since: new Date(2008, 10 - 1, 29),
+						format: 'YDHMS',
+						description: 'of work experience',
+						layout: '<a href="/time.html">{y<}{yn} {yl}{y>} ' +
+								'{o<}{on} {ol}{o>} ' +
+								'{d<}{dn} {dl}{d>} ' +
+								'{hnn}{sep}{mnn}{sep}{snn} {desc}</a>'});
+				}
+			});
+		}
+
 	</script>
 
+	<link rel="stylesheet" href="resources/js/jquery.countdown.package-1.5.9/jquery.countdown.css"/>
 	<link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Crimson+Text:regular,600&v1' type='text/css'>
 
 	<link rel="stylesheet" href="resources/css/main.css" type="text/css"/>
@@ -230,7 +246,7 @@
 		<dd>
 			<ul class="languages_list">
 				<li class="language">
-					<a href="/time.html"><strong>Java</strong> (advanced, 3 years of work experience)</a><br/>
+					<strong>Java</strong> (advanced, <span id="java_exp_countdown"></span>)<br/>
 					Libraries and frameworks:<br/>
 					<ul>
 						<li><a href="http://www.oracle.com/technetwork/java/javaee/overview/index.html">JavaEE</a></li>
