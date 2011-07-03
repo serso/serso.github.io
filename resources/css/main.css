@@ -79,6 +79,7 @@ div#footer {
 
 #content dl dt {
 	color: #666666; /*	color: #571203;*/
+	clear: left;
 	float: left;
 	font-weight: bold;
 	margin: 0;
