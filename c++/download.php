@@ -35,7 +35,7 @@ $allowed_ext = array (
 
   // archives
 /*  'zip' => 'application/zip',*/
-  'apk' => 'application/zip'
+  'apk' => 'application/vnd.android.package-archive'
 /*
   // documents
   'pdf' => 'application/pdf',
