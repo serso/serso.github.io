@@ -88,6 +88,10 @@ div#footer {
 	width: 11em;
 }
 
+#content dl dt.work_date {
+    color: #cccccc;
+}
+
 h1, h2, h3 {
 	padding: 0 0 0 202px;
 	text-align: left;
