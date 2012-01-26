@@ -19,7 +19,7 @@ define('ALLOWED_REFERRER', '');
 
 // Download folder, i.e. folder where you keep all files for download.
 // MUST end with slash (i.e. "/" )
-define('BASE_DIR','/usr/www/users/solovy/se.solovyev.org/c++/files/');
+define('BASE_DIR','/usr/www/users/solovy/se.solovyev.org/cpp/files/');
 
 // log downloads?  true/false
 define('LOG_DOWNLOADS',true);

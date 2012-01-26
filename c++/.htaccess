@@ -1,9 +1,0 @@
-<Files *.*>
-  order allow,deny
-  deny from all
-</Files>
-
-<Files download.php>
-  order allow,deny
-  allow from all
-</Files>
