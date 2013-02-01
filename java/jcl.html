@@ -106,6 +106,28 @@
             <dt>3.</dt>
             <dd><a href="#components">Components</a></dd>
 
+            <dt>3.1</dt>
+            <dd><a href="#components_core" style="margin-left: 1em">Core</a></dd>
+
+            <dt>3.2</dt>
+            <dd><a href="#components_text" style="margin-left: 1em">Text</a></dd>
+
+            <dt>3.3</dt>
+            <dd><a href="#components_msg" style="margin-left: 1em">Message</a></dd>
+
+            <dt>3.4</dt>
+            <dd><a href="#components_tree" style="margin-left: 1em">Tree</a></dd>
+
+            <dt>3.5</dt>
+            <dd><a href="#components_multiset" style="margin-left: 1em">Multi Set</a></dd>
+
+            <dt>3.6</dt>
+            <dd><a href="#components_corejodatime" style="margin-left: 1em">Core Joda-time</a></dd>
+
+            <dt>3.7</dt>
+            <dd><a href="#components_security" style="margin-left: 1em">Security</a></dd>
+
+
             <dt>4.</dt>
             <dd><a href="#source_code">Source code</a></dd>
 
@@ -155,10 +177,10 @@
                     </li>
                     <li>Maven users can just add dependency in pom.xml:
                         <pre class="brush: xml">
-&lt;!-- for code module--&gt;
+&lt;!-- all modules --&gt;
 &lt;dependency&gt;
     &lt;groupId&gt;org.solovyev&lt;/groupId&gt;
-    &lt;artifactId&gt;common-core&lt;/artifactId&gt;
+    &lt;artifactId&gt;common-all&lt;/artifactId&gt;
     &lt;version&gt;LATEST_VERSION&lt;/version&gt;
 &lt;/dependency&gt;
                         </pre>
@@ -182,17 +204,37 @@
 
             <dt>Core</dt>
             <dd>
-                Provides basic classes and interfaces. <a href="#components_core">Read mode...</a><br/>
+                Provides basic classes and interfaces. <br/><a href="#components_core">More...</a>
             </dd>
 
             <dt>Text</dt>
             <dd>
-                Provides operations with strings: parsers, formatters and mappers
+                Provides operations with strings: parsers, formatters and mappers. <br/><a href="#components_text">More...</a>
             </dd>
 
             <dt>Message</dt>
             <dd>
-                Provides operations with strings: parsers, formatters and mappers
+                Contains interface and abstract implementation for translatable message. <br/><a href="#components_msg">More...</a>
+            </dd>
+
+            <dt>Tree</dt>
+            <dd>
+                Contains interface and implementation for tree data structure missing in JDK and Guava. <br/><a href="#components_tree">More...</a>
+            </dd>
+
+            <dt>Multiset</dt>
+            <dd>
+                Contains interface and implementation for multiset data structure (Note: Guava has own implementation of Multiset). <br/><a href="#components_multiset">More...</a>
+            </dd>
+
+            <dt>Core Joda-time</dt>
+            <dd>
+                Contains several core classes which depend on joda-time library. <br/><a href="#components_core_jodatime">More...</a>
+            </dd>
+
+            <dt>Security</dt>
+            <dd>
+                Contains security abstraction over javax.crypto package. <br/><a href="#components_security">More...</a>
             </dd>
 
 
@@ -203,6 +245,21 @@
 
     <div class="left">
         <dl>
+            <dt>Description</dt>
+            <dd>
+                This component contains several classes and interfaces which can be useful in any Java program.<br/>
+                <ol>
+                    <li><strong>org.solovyev.common.JObject</strong> class which implements <strong>Cloneable</strong> interface and overrides method <strong>clone()</strong></li>
+                    <li><strong>org.solovyev.common.JCloneable</strong> interface which extends <strong>Cloneable</strong> and declares method <strong>clone()</strong></li>
+                    <li><strong>org.solovyev.common.JPredicate</strong> which is a copy of Guava's <strong>com.google.common.base.Predicate</strong></li>
+                    <li><strong>org.solovyev.common.SynchronizedObject</strong> which allows to create synchronized objects easily</li>
+                    <li><strong>org.solovyev.common.MutableObject</strong> which allows to create mutable object</li>
+                    <li><strong>org.solovyev.common.JBuilder</strong> - base interface for all builders</li>
+                    <li><strong>org.solovyev.common.listeners.Listeners</strong> - interface for listeners container (object which holds listeners)</li>
+                    <li><strong>org.solovyev.common.interval.Interval</strong> which represents typed interval</li>
+                    <li><strong>org.solovyev.common.equals.Equalizer</strong> - interface for comparing two objects on equality</li>
+                </ol>
+            </dd>
             <dt>Installation</dt>
             <dd>
                                         <pre class="brush: xml">
@@ -225,6 +282,7 @@
             <dt></dt>
             <dd>
                 Source code is available on github: <a target="_blank" href="https://github.com/serso/common">https://github.com/serso/common</a>.<br/>
+                Maven users may want to install <strong>javac2-maven-plugin</strong> which can be found in <strong>misc</strong> folder (see README for more details).<br/>
                 Feel free to participate in development, pull requests are highly appreciated.
             </dd>
 
@@ -241,11 +299,11 @@
             <dd>
                 Sergey Solovyev (serso aka se.solovyev)
             </dd>
-            <dt>email</dt>
+            <dt>Email</dt>
             <dd>
                 se.solovyev@gmail.com
             </dd>
-            <dt>website</dt>
+            <dt>Website</dt>
             <dd>
                 <a target="_blank" href="http://se.solovyev.org">http://se.solovyev.org</a>
             </dd>
