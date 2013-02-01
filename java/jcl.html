@@ -1,0 +1,283 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>se.solovyev - CV</title>
+
+    <script type="text/javascript" src="/resources/js/jquery-1.6.1.js"></script>
+    <script type="text/javascript" src="/resources/js/jquery.countdown.package-1.5.9/jquery.countdown.pack.js"></script>
+    <script type="text/javascript" src="/resources/js/syntaxhighlighter/shCore.js"></script>
+    <script type="text/javascript" src="/resources/js/syntaxhighlighter/shBrushXml.js"></script>
+    <script type="text/javascript" src="/resources/js/syntaxhighlighter/shBrushJava.js"></script>
+
+    <script type="text/javascript">
+        if (jQuery) {
+            $(document).ready(function() {
+                // syntax highlighting
+                SyntaxHighlighter.all()
+
+                // slided content
+                $(".slided_content").hide();
+
+                $("a.slided").click(
+                        function(event) {
+
+                            // Prevent the default event.
+                            event.preventDefault();
+
+
+                            var nextSibling = $(this).next();
+
+                            // Toggle the slide based on its current
+                            // visibility.
+                            if (nextSibling.is(":visible")) {
+
+                                // Hide - slide up.
+                                nextSibling.slideUp(500);
+
+                            } else {
+
+                                // Show - slide down.
+                                nextSibling.slideDown(500);
+
+                            }
+                        }
+                );
+            });
+        }
+
+    </script>
+
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-24192724-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+
+    </script>
+
+    <link rel="stylesheet" href="/resources/js/jquery.countdown.package-1.5.9/jquery.countdown.css"/>
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Crimson+Text:regular,600&v1' type='text/css'>
+
+    <link rel="stylesheet" href="/resources/css/main.css" type="text/css"/>
+    <link rel="stylesheet" href="/resources/css/syntaxhighlighter/shCore.css" type="text/css"/>
+    <link rel="stylesheet" href="/resources/css/syntaxhighlighter/shCoreDefault.css" type="text/css"/>
+
+    <link rel="shortcut icon" href="/resources/images/favicon.ico" type="image/x-icon"/>
+
+</head>
+<body>
+
+<div id="page">
+<div id="container">
+<div id="header">
+    <div id="se_solovyev_img">
+        <a href="/" class="nohover">
+            <img src="/resources/images/header.png" alt="se.solovyev" height="202" width="879" border="0">
+        </a>
+    </div>
+</div>
+<div id="center">
+<div id="content">
+
+    <h2>Java Common Library</h2>
+
+    <h3>Contents</h3>
+
+    <div class="left">
+
+        <dl>
+
+            <dt>1.</dt>
+            <dd><a href="#about">About</a></dd>
+
+            <dt>2.</dt>
+            <dd><a href="#installation">Installation</a></dd>
+
+            <dt>3.</dt>
+            <dd><a href="#components">Components</a></dd>
+
+            <dt>4.</dt>
+            <dd><a href="#source_code">Source code</a></dd>
+
+            <dt>5.</dt>
+            <dd><a href="#contributors">Contributors</a></dd>
+
+            <dt>6.</dt>
+            <dd><a href="#license">License</a></dd>
+
+        </dl>
+    </div>
+
+    <h3><span id="about">About</span></h3>
+
+    <div class="left">
+
+        <dl>
+
+            <dt></dt>
+            <dd>
+                Java Common Library (JCL) is an open source Java library written due to several reasons:
+                <ol>
+                    <li>To provide classes which are missing in JDK (or other well know libraries like Guava)</li>
+                    <li>To fix the mistakes which have been done in JDK (e.g. Cloneable without clone())</li>
+                    <li>To provide different utility classes which can be used quite often</li>
+                </ol>
+            </dd>
+
+        </dl>
+    </div>
+
+    <h3><span id="installation">Installation</span></h3>
+
+    <div class="left">
+
+        <dl>
+
+            <dt></dt>
+            <dd>
+                There are three different ways of installation the library:
+                <ol>
+                    <li>Binary jars and source code archives can be downloaded <a target="_blank"
+                                                                                  href="https://oss.sonatype.org/content/repositories/releases/org/solovyev/">here</a>
+                    </li>
+                    <li>Source code can be cloned from github repository (see <a href="#source_code">Source Code</a>
+                        section) and built manually
+                    </li>
+                    <li>Maven users can just add dependency in pom.xml:
+                        <pre class="brush: xml">
+&lt;!-- for code module--&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.solovyev&lt;/groupId&gt;
+    &lt;artifactId&gt;common-core&lt;/artifactId&gt;
+    &lt;version&gt;LATEST_VERSION&lt;/version&gt;
+&lt;/dependency&gt;
+                        </pre>
+                    </li>
+                </ol>
+            </dd>
+
+        </dl>
+    </div>
+
+    <h3><span id="components">Components</span></h3>
+
+    <div class="left">
+
+        <dl>
+
+            <dt></dt>
+            <dd>
+                JCL contains several loosely bounded components:
+            </dd>
+
+            <dt>Core</dt>
+            <dd>
+                Provides basic classes and interfaces. <a href="#components_core">Read mode...</a><br/>
+            </dd>
+
+            <dt>Text</dt>
+            <dd>
+                Provides operations with strings: parsers, formatters and mappers
+            </dd>
+
+            <dt>Message</dt>
+            <dd>
+                Provides operations with strings: parsers, formatters and mappers
+            </dd>
+
+
+        </dl>
+    </div>
+
+    <h3><span id="components_core">Component: Core</span></h3>
+
+    <div class="left">
+        <dl>
+            <dt>Installation</dt>
+            <dd>
+                                        <pre class="brush: xml">
+&lt;dependency&gt;
+    &lt;groupId&gt;org.solovyev&lt;/groupId&gt;
+    &lt;artifactId&gt;common-core&lt;/artifactId&gt;
+    &lt;version&gt;LATEST_VERSION&lt;/version&gt;
+&lt;/dependency&gt;
+                        </pre>
+            </dd>
+        </dl>
+    </div>
+
+    <h3><span id="source_code">Source Code</span></h3>
+
+    <div class="left">
+
+        <dl>
+
+            <dt></dt>
+            <dd>
+                Source code is available on github: <a target="_blank" href="https://github.com/serso/common">https://github.com/serso/common</a>.<br/>
+                Feel free to participate in development, pull requests are highly appreciated.
+            </dd>
+
+        </dl>
+    </div>
+
+    <h3><span id="contributors">Contributors</span></h3>
+
+    <div class="left">
+
+        <dl>
+
+            <dt>Name</dt>
+            <dd>
+                Sergey Solovyev (serso aka se.solovyev)
+            </dd>
+            <dt>email</dt>
+            <dd>
+                se.solovyev@gmail.com
+            </dd>
+            <dt>website</dt>
+            <dd>
+                <a target="_blank" href="http://se.solovyev.org">http://se.solovyev.org</a>
+            </dd>
+            <dt></dt>
+            <dd>
+                Project initiator, main contributor.
+            </dd>
+
+        </dl>
+    </div>
+
+    <h3><span id="license">License</span></h3>
+
+    <div class="left">
+
+        <dl>
+
+            <dt></dt>
+            <dd>
+                Java Common Library is distributed freely under <a target="_blank" href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache 2.0 License</a>
+            </dd>
+
+        </dl>
+    </div>
+
+</div>
+</div>
+<div id="footer">
+    <a href="/">se.solovyev</a>, 2013
+</div>
+</div>
+</div>
+
+</body>
+</html>
