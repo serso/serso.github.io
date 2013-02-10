@@ -12,7 +12,7 @@
 
     <script type="text/javascript">
         if (jQuery) {
-            $(document).ready(function() {
+            $(document).ready(function () {
                 // syntax highlighting
                 SyntaxHighlighter.all()
 
@@ -20,7 +20,7 @@
                 $(".slided_content").hide();
 
                 $("a.slided").click(
-                        function(event) {
+                        function (event) {
 
                             // Prevent the default event.
                             event.preventDefault();
@@ -54,7 +54,7 @@
         _gaq.push(['_setAccount', 'UA-24192724-1']);
         _gaq.push(['_trackPageview']);
 
-        (function() {
+        (function () {
             var ga = document.createElement('script');
             ga.type = 'text/javascript';
             ga.async = true;
@@ -89,93 +89,93 @@
 <div id="center">
 <div id="content">
 
-    <h2>Java Common Library</h2>
+<h2>Java Common Library</h2>
 
-    <h3>Contents</h3>
+<h3>Contents</h3>
 
-    <div class="left">
+<div class="left">
 
-        <dl>
+    <dl>
 
-            <dt>1.</dt>
-            <dd><a href="#about">About</a></dd>
+        <dt>1.</dt>
+        <dd><a href="#about">About</a></dd>
 
-            <dt>2.</dt>
-            <dd><a href="#installation">Installation</a></dd>
+        <dt>2.</dt>
+        <dd><a href="#installation">Installation</a></dd>
 
-            <dt>3.</dt>
-            <dd><a href="#components">Components</a></dd>
+        <dt>3.</dt>
+        <dd><a href="#components">Components</a></dd>
 
-            <dt>3.1</dt>
-            <dd><a href="#components_core" style="margin-left: 1em">Core</a></dd>
+        <dt>3.1</dt>
+        <dd><a href="#components_core" style="margin-left: 1em">Core</a></dd>
 
-            <dt>3.2</dt>
-            <dd><a href="#components_text" style="margin-left: 1em">Text</a></dd>
+        <dt>3.2</dt>
+        <dd><a href="#components_text" style="margin-left: 1em">Text</a></dd>
 
-            <dt>3.3</dt>
-            <dd><a href="#components_msg" style="margin-left: 1em">Message</a></dd>
+        <dt>3.3</dt>
+        <dd><a href="#components_msg" style="margin-left: 1em">Message</a></dd>
 
-            <dt>3.4</dt>
-            <dd><a href="#components_tree" style="margin-left: 1em">Tree</a></dd>
+        <dt>3.4</dt>
+        <dd><a href="#components_tree" style="margin-left: 1em">Tree</a></dd>
 
-            <dt>3.5</dt>
-            <dd><a href="#components_multiset" style="margin-left: 1em">Multi Set</a></dd>
+        <dt>3.5</dt>
+        <dd><a href="#components_multiset" style="margin-left: 1em">Multi Set</a></dd>
 
-            <dt>3.6</dt>
-            <dd><a href="#components_corejodatime" style="margin-left: 1em">Core Joda-time</a></dd>
+        <dt>3.6</dt>
+        <dd><a href="#components_corejodatime" style="margin-left: 1em">Core Joda-time</a></dd>
 
-            <dt>3.7</dt>
-            <dd><a href="#components_security" style="margin-left: 1em">Security</a></dd>
+        <dt>3.7</dt>
+        <dd><a href="#components_security" style="margin-left: 1em">Security</a></dd>
 
 
-            <dt>4.</dt>
-            <dd><a href="#source_code">Source code</a></dd>
+        <dt>4.</dt>
+        <dd><a href="#source_code">Source code</a></dd>
 
-            <dt>5.</dt>
-            <dd><a href="#contributors">Contributors</a></dd>
+        <dt>5.</dt>
+        <dd><a href="#contributors">Contributors</a></dd>
 
-            <dt>6.</dt>
-            <dd><a href="#license">License</a></dd>
+        <dt>6.</dt>
+        <dd><a href="#license">License</a></dd>
 
-        </dl>
-    </div>
+    </dl>
+</div>
 
-    <h3><span id="about">About</span></h3>
+<h3><span id="about">About</span></h3>
 
-    <div class="left">
+<div class="left">
 
-        <dl>
+    <dl>
 
-            <dt></dt>
-            <dd>
-                Java Common Library (JCL) is an open source Java library written due to several reasons:
-                <ol>
-                    <li>To provide classes which are missing in JDK (or other well know libraries like Guava)</li>
-                    <li>To fix the mistakes which have been done in JDK (e.g. Cloneable without clone())</li>
-                    <li>To provide different utility classes which can be used quite often</li>
-                </ol>
-            </dd>
+        <dt></dt>
+        <dd>
+            Java Common Library (JCL) is an open source Java library written due to several reasons:
+            <ol>
+                <li>To provide classes which are missing in JDK (or other well know libraries like Guava)</li>
+                <li>To fix the mistakes which have been done in JDK (e.g. Cloneable without clone())</li>
+                <li>To provide different utility classes which can be used quite often</li>
+            </ol>
+        </dd>
 
-        </dl>
-    </div>
+    </dl>
+</div>
 
-    <h3><span id="installation">Installation</span></h3>
+<h3><span id="installation">Installation</span></h3>
 
-    <div class="left">
+<div class="left">
 
-        <dl>
+    <dl>
 
-            <dt></dt>
-            <dd>
-                There are three different ways of installation the library:
-                <ol>
-                    <li>Binary jars and source code archives can be downloaded <a target="_blank"
-                                                                                  href="https://oss.sonatype.org/content/repositories/releases/org/solovyev/">here</a>
-                    </li>
-                    <li>Source code can be cloned from github repository (see <a href="#source_code">Source Code</a>
-                        section) and built manually
-                    </li>
-                    <li>Maven users can just add dependency in pom.xml:
+        <dt></dt>
+        <dd>
+            There are three different ways of installation the library:
+            <ol>
+                <li>Binary jars and source code archives can be downloaded <a target="_blank"
+                                                                              href="https://oss.sonatype.org/content/repositories/releases/org/solovyev/">here</a>
+                </li>
+                <li>Source code can be cloned from github repository (see <a href="#source_code">Source Code</a>
+                    section) and built manually
+                </li>
+                <li>Maven users can just add dependency in pom.xml:
                         <pre class="brush: xml">
 &lt;!-- all modules --&gt;
 &lt;dependency&gt;
@@ -184,84 +184,82 @@
     &lt;version&gt;LATEST_VERSION&lt;/version&gt;
 &lt;/dependency&gt;
                         </pre>
-                    </li>
-                </ol>
-            </dd>
+                </li>
+            </ol>
+        </dd>
 
-        </dl>
-    </div>
+    </dl>
+</div>
 
-    <h3><span id="components">Components</span></h3>
+<h3><span id="components">Components</span></h3>
 
-    <div class="left">
+<div class="left">
 
-        <dl>
+    <dl>
 
-            <dt></dt>
-            <dd>
-                JCL contains several loosely bounded components:
-            </dd>
+        <dt></dt>
+        <dd>
+            JCL contains several loosely bounded components:
+        </dd>
 
-            <dt>Core</dt>
-            <dd>
-                Provides basic classes and interfaces. <a href="#components_core">More...</a>
-            </dd>
+        <dt>Core</dt>
+        <dd>
+            Provides basic classes and interfaces. <a href="#components_core">More...</a>
+        </dd>
 
-            <dt>Text</dt>
-            <dd>
-                Provides operations with strings: parsers, formatters and mappers. <a href="#components_text">More...</a>
-            </dd>
+        <dt>Text</dt>
+        <dd>
+            Provides operations with strings: parsers, formatters and mappers. <a href="#components_text">More...</a>
+        </dd>
 
-            <dt>Message</dt>
-            <dd>
-                Contains interface and abstract implementation for translatable message. <a href="#components_msg">More...</a>
-            </dd>
+        <dt>Message</dt>
+        <dd>
+            Contains interface and abstract implementation for translatable message. <a
+                href="#components_msg">More...</a>
+        </dd>
 
-            <dt>Tree</dt>
-            <dd>
-                Contains interface and implementation for tree data structure missing in JDK and Guava. <a href="#components_tree">More...</a>
-            </dd>
+        <dt>Tree</dt>
+        <dd>
+            Contains interface and implementation for tree data structure missing in JDK and Guava. <a
+                href="#components_tree">More...</a>
+        </dd>
 
-            <dt>Multiset</dt>
-            <dd>
-                Contains interface and implementation for multiset data structure (Note: Guava has own implementation of Multiset). <a href="#components_multiset">More...</a>
-            </dd>
+        <dt>Multiset</dt>
+        <dd>
+            Contains interface and implementation for multiset data structure (Note: Guava has own implementation of
+            Multiset). <a href="#components_multiset">More...</a>
+        </dd>
 
-            <dt>Core Joda-time</dt>
-            <dd>
-                Contains several core classes which depend on joda-time library. <a href="#components_core_jodatime">More...</a>
-            </dd>
+        <dt>Core Joda-time</dt>
+        <dd>
+            Contains several core classes which depend on joda-time library. <a
+                href="#components_core_jodatime">More...</a>
+        </dd>
 
-            <dt>Security</dt>
-            <dd>
-                Contains security abstraction over javax.crypto package. <a href="#components_security">More...</a>
-            </dd>
+        <dt>Security</dt>
+        <dd>
+            Contains security abstraction over javax.crypto package. <a href="#components_security">More...</a>
+        </dd>
+
+        <dt>Listeners</dt>
+        <dd>
+            Contains everything related to Listener/Observer pattern. <a href="#components_listeners">More...</a>
+        </dd>
 
 
-        </dl>
-    </div>
+    </dl>
+</div>
 
-    <h3><span id="components_core">Component: Core</span></h3>
+<h3><span id="components_core">Component: Core</span></h3>
 
-    <div class="left">
-        <dl>
-            <dt>Description</dt>
-            <dd>
-                This component contains several classes and interfaces which can be useful in any Java program.<br/>
-                <ol>
-                    <li><strong>org.solovyev.common.JObject</strong> class which implements <strong>Cloneable</strong> interface and overrides method <strong>clone()</strong></li>
-                    <li><strong>org.solovyev.common.JCloneable</strong> interface which extends <strong>Cloneable</strong> and declares method <strong>clone()</strong></li>
-                    <li><strong>org.solovyev.common.JPredicate</strong> which is a copy of Guava's <strong>com.google.common.base.Predicate</strong></li>
-                    <li><strong>org.solovyev.common.SynchronizedObject</strong> which allows to create synchronized objects easily</li>
-                    <li><strong>org.solovyev.common.MutableObject</strong> which allows to create mutable object</li>
-                    <li><strong>org.solovyev.common.JBuilder</strong> - base interface for all builders</li>
-                    <li><strong>org.solovyev.common.listeners.Listeners</strong> - interface for listeners container (object which holds listeners)</li>
-                    <li><strong>org.solovyev.common.interval.Interval</strong> which represents typed interval</li>
-                    <li><strong>org.solovyev.common.equals.Equalizer</strong> - interface for comparing two objects on equality</li>
-                </ol>
-            </dd>
-            <dt>Installation</dt>
-            <dd>
+<div class="left">
+    <dl>
+        <dt>Description</dt>
+        <dd>
+            This component contains several classes and interfaces which can be useful in any Java program.
+        </dd>
+        <dt>Installation</dt>
+        <dd>
                                         <pre class="brush: xml">
 &lt;dependency&gt;
     &lt;groupId&gt;org.solovyev&lt;/groupId&gt;
@@ -269,65 +267,180 @@
     &lt;version&gt;LATEST_VERSION&lt;/version&gt;
 &lt;/dependency&gt;
                         </pre>
+        </dd>
+
+        <dt>Usage</dt>
+        <dd></dd>
+        <dt>JObject/JCloneable</dt>
+        <dd>
+            <strong>org.solovyev.common.JObject</strong> implements <strong>Cloneable</strong> interface and
+            overrides method <strong>clone()</strong> without throwing <strong>CloneNotSupportedException</strong><br/>
+            <strong>org.solovyev.common.JCloneable</strong> extends <strong>Cloneable</strong> and
+            declares method <strong>clone()</strong><br/>
+            <pre class="brush: java">
+public class IntervalImpl&lt;T extends Comparable&lt;T&gt;&gt; extends JObject implements Interval&lt;T&gt;, JCloneable&lt;Interval&lt;T&gt;&gt; {
+
+    @NotNull
+    @Override
+    public IntervalImpl&lt;T&gt; clone() {
+        final IntervalImpl&lt;T&gt; clone = (IntervalImpl&lt;T&gt;) super.clone();
+
+        clone.left = this.left.clone();
+        clone.right = this.right.clone();
+
+        return clone;
+    }
+}
+            </pre>
+        <dt>JPredicate</dt>
+        <dd><strong>org.solovyev.common.JPredicate</strong> is a copy of Guava's <strong>com.google.common.base.Predicate</strong><br/>
+<pre class="brush: java">
+public class EqualsFilter&lt;T&gt; implements JPredicate&lt;T&gt; {
+
+    @NotNull
+    private final T filterObject;
+
+    public EqualsFilter(@NotNull T filterObject) {
+        this.filterObject = filterObject;
+    }
+
+    @Override
+    public boolean apply(T object) {
+        return Objects.areEqual(filterObject, object);
+    }
+}
+</pre>
+        </dd>
+        <dt>SynchronizedObject</dt>
+        <dd><strong>org.solovyev.common.SynchronizedObject</strong> allows to create synchronized objects easily<br/>
+<pre class="brush: java">
+class SynchronizedMessageRegistry extends SynchronizedObject&lt;MessageRegistry&gt; implements MessageRegistry {
+
+    private SynchronizedMessageRegistry(@NotNull MessageRegistry delegate) {
+        super(delegate);
+    }
+
+    @Override
+    public void addMessage(@NotNull Message message) {
+        synchronized (this.mutex) {
+            delegate().addMessage(message);
+        }
+    }
+
+    @Override
+    public boolean hasMessage() {
+        synchronized (this.mutex) {
+            return delegate().hasMessage();
+        }
+    }
+
+    @NotNull
+    @Override
+    public Message getMessage() {
+        synchronized (this.mutex) {
+            return delegate().getMessage();
+        }
+    }
+}
+</pre>
             </dd>
-        </dl>
-    </div>
+        <dt>MutableObject</dt>
+        <dd><strong>org.solovyev.common.MutableObject</strong> allows to create mutable object<br/>
+<pre class="brush: java">
+final MutableObject&lt;Thread&gt; eventThread = new MutableObject&lt;Thread&gt;();
+listeners.addListener(new JEventListener&lt;JEvent&gt;() {
+    @NotNull
+    @Override
+    public Class&lt;JEvent&gt; getEventType() {
+        return JEvent.class;
+    }
 
-    <h3><span id="source_code">Source Code</span></h3>
+    @Override
+    public void onEvent(@NotNull JEvent event) {
+        eventThread.setObject(Thread.currentThread());
+        latch.countDown();
+    }
+});
+</pre>
+        </dd>
+        <dt>Interval</dt>
+        <dd><strong>org.solovyev.common.interval.Interval</strong> represents typed interval<br/>
+<pre class="brush: java">
+final Interval&lt;Integer&gt; interval1 = IntervalImpl.newInstance(IntervalLimitImpl.newInstance(10, true), IntervalLimitImpl.newInstance(20, true));
+final Interval&lt;Integer&gt; interval2 = IntervalImpl.newInstance(IntervalLimitImpl.newInstance(12, true), IntervalLimitImpl.newInstance(18, true));
+Assert.assertTrue(interval1.contains(interval2));
+</pre>
+        </dd>
+        <dt>Equalizer</dt>
+        <dd><strong>org.solovyev.common.equals.Equalizer</strong> - interface for comparing two objects on equality<br/>
+<pre class="brush: java">
+if(Objects.areEqual(list1, list2, new CollectionEqualizer&lt;CalculatorHistoryState&gt;(null))){
+    //...
+}
+</pre>
+        </dd>
 
-    <div class="left">
+    </dl>
+</div>
 
-        <dl>
+<h3><span id="source_code">Source Code</span></h3>
 
-            <dt></dt>
-            <dd>
-                Source code is available on github: <a target="_blank" href="https://github.com/serso/common">https://github.com/serso/common</a>.<br/>
-                Maven users may want to install <strong>javac2-maven-plugin</strong> which can be found in <strong>misc</strong> folder (see README for more details).<br/>
-                Feel free to participate in development, pull requests are highly appreciated.
-            </dd>
+<div class="left">
 
-        </dl>
-    </div>
+    <dl>
 
-    <h3><span id="contributors">Contributors</span></h3>
+        <dt></dt>
+        <dd>
+            Source code is available on github: <a target="_blank" href="https://github.com/serso/common">https://github.com/serso/common</a>.<br/>
+            Maven users may want to install <strong>javac2-maven-plugin</strong> which can be found in
+            <strong>misc</strong> folder (see README for more details).<br/>
+            Feel free to participate in development, pull requests are highly appreciated.
+        </dd>
 
-    <div class="left">
+    </dl>
+</div>
 
-        <dl>
+<h3><span id="contributors">Contributors</span></h3>
 
-            <dt>Name</dt>
-            <dd>
-                Sergey Solovyev (serso aka se.solovyev)
-            </dd>
-            <dt>Email</dt>
-            <dd>
-                se.solovyev@gmail.com
-            </dd>
-            <dt>Website</dt>
-            <dd>
-                <a target="_blank" href="http://se.solovyev.org">http://se.solovyev.org</a>
-            </dd>
-            <dt></dt>
-            <dd>
-                Project initiator, main contributor.
-            </dd>
+<div class="left">
 
-        </dl>
-    </div>
+    <dl>
 
-    <h3><span id="license">License</span></h3>
+        <dt>Name</dt>
+        <dd>
+            Sergey Solovyev (serso aka se.solovyev)
+        </dd>
+        <dt>Email</dt>
+        <dd>
+            se.solovyev@gmail.com
+        </dd>
+        <dt>Website</dt>
+        <dd>
+            <a target="_blank" href="http://se.solovyev.org">http://se.solovyev.org</a>
+        </dd>
+        <dt></dt>
+        <dd>
+            Project initiator, main contributor.
+        </dd>
 
-    <div class="left">
+    </dl>
+</div>
 
-        <dl>
+<h3><span id="license">License</span></h3>
 
-            <dt></dt>
-            <dd>
-                Java Common Library is distributed freely under <a target="_blank" href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache 2.0 License</a>
-            </dd>
+<div class="left">
 
-        </dl>
-    </div>
+    <dl>
+
+        <dt></dt>
+        <dd>
+            Java Common Library is distributed freely under <a target="_blank"
+                                                               href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache
+            2.0 License</a>
+        </dd>
+
+    </dl>
+</div>
 
 </div>
 </div>
