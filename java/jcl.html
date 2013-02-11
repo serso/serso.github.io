@@ -204,12 +204,12 @@
 
         <dt>Core</dt>
         <dd>
-            Provides basic classes and interfaces. <a href="#components_core">More...</a>
+            Basic classes and interfaces. <a href="#components_core">More...</a>
         </dd>
 
         <dt>Text</dt>
         <dd>
-            Provides operations with strings: parsers, formatters and mappers. <a href="#components_text">More...</a>
+            Strings and everything related to them: mappers, formatters, parsers. <a href="#components_text">More...</a>
         </dd>
 
         <dt>Message</dt>
@@ -273,13 +273,16 @@
         <dd>&nbsp;</dd>
         <dt>JObject/JCloneable</dt>
         <dd>
-            <span class="source_link">JObject</span> class implements <span class="source_link">Cloneable</span> interface and
+            <span class="source_link">JObject</span> class implements <span class="source_link">Cloneable</span>
+            interface and
             overrides method <span class="source_link">clone()</span> without throwing <span class="source_link">CloneNotSupportedException</span>.
-            This is the default behaviour which must be provided by JDK (see "Effective Java 2nd Edition, Item 11: Override clone judiciously").
+            This is the default behaviour which must be provided by JDK (see "Effective Java 2nd Edition, Item 11:
+            Override clone judiciously").
             You can put this class at the top of your class hierarchy to make clone() implementation easier.
             <strong>Note:</strong> this class can be effectively used in conjunction with <span class="source_link">JCloneable.</span><br/>
             <span class="source_link">JCloneable</span> interface extends <span class="source_link">Cloneable</span> and
-            declares <span class="source_link">clone()</span> method. This allows user to implement collections (or other containers) with deep clone support (see <span class="source_link">Cloneables</span> class).<br/><br/>
+            declares <span class="source_link">clone()</span> method. This allows user to implement collections (or
+            other containers) with deep clone support (see <span class="source_link">Cloneables</span> class).<br/><br/>
             <span class="source_example_title">Example: cloneable object</span><br/>
             <pre class="brush: java">
 public class IntervalImpl&lt;T extends Comparable&lt;T&gt;&gt; extends JObject implements Interval&lt;T&gt;, JCloneable&lt;Interval&lt;T&gt;&gt; {
@@ -307,9 +310,10 @@ intervals.add(Intervals.newClosed(10, 520));
 final List&lt;Interval&lt;Integer&gt;&gt; intervalsCopy = Cloneables.cloneList(intervals);
             </pre>
         <dt>JPredicate</dt>
-        <dd><span class="source_link">JPredicate</span> is a copy of Guava's <span class="source_link">Predicate</span> and can be used in the same manner (e.g. for filtering, search, etc).
+        <dd><span class="source_link">JPredicate</span> is a copy of Guava's <span class="source_link">Predicate</span>
+            and can be used in the same manner (e.g. for filtering, search, etc).
             See <span class="source_link">Collections</span>.<br/>
-        <br/><span class="source_example_title">Example: equality filter</span><br/>
+            <br/><span class="source_example_title">Example: equality filter</span><br/>
 <pre class="brush: java">
 public class EqualsFilter&lt;T&gt; implements JPredicate&lt;T&gt; {
 
@@ -326,7 +330,7 @@ public class EqualsFilter&lt;T&gt; implements JPredicate&lt;T&gt; {
     }
 }
 </pre>
-<br/><span class="source_example_title">Example: usage in TreeNode</span><br/>
+            <br/><span class="source_example_title">Example: usage in TreeNode</span><br/>
 <pre class="brush: java">
 MutableTreeNode&lt;T&gt; result = this.findOwnChild(new JPredicate&lt;TreeNode&lt;T&gt;&gt;() {
         @Override
@@ -342,8 +346,9 @@ if ( result == null ) {
         </dd>
         <dt>SynchronizedObject</dt>
         <dd><span class="source_link">SynchronizedObject</span> class allows to create synchronized objects easily -
-            references to synchronized (object which operations should be synchronized) and synchronization (mutex or lock) objects are stored in the fields and are accessible for subclasses.<br/>
-<br/><span class="source_example_title">Example: synchronized MessageRegistry</span><br/>
+            references to synchronized (object which operations should be synchronized) and synchronization (mutex or
+            lock) objects are stored in the fields and are accessible for subclasses.<br/>
+            <br/><span class="source_example_title">Example: synchronized MessageRegistry</span><br/>
 <pre class="brush: java">
 class SynchronizedMessageRegistry extends SynchronizedObject&lt;MessageRegistry&gt; implements MessageRegistry {
 
@@ -374,10 +379,11 @@ class SynchronizedMessageRegistry extends SynchronizedObject&lt;MessageRegistry&
     }
 }
 </pre>
-            </dd>
+        </dd>
         <dt>MutableObject</dt>
-        <dd><span class="source_link">MutableObject</span> might be useful if method should return more than one value or if some data should be passed to anonymous class.<br/>
-<br/><span class="source_example_title">Example: passing parameter to anonymous class</span><br/>
+        <dd><span class="source_link">MutableObject</span> might be useful if method should return more than one value
+            or if some data should be passed to anonymous class.<br/>
+            <br/><span class="source_example_title">Example: passing parameter to anonymous class</span><br/>
 <pre class="brush: java">
 final MutableObject&lt;Thread&gt; eventThread = new MutableObject&lt;Thread&gt;();
 listeners.addListener(new JEventListener&lt;JEvent&gt;() {
@@ -396,22 +402,105 @@ listeners.addListener(new JEventListener&lt;JEvent&gt;() {
 </pre>
         </dd>
         <dt>Interval</dt>
-        <dd><span class="source_link">Interval</span> represents typed interval.<br/>
+        <dd><span class="source_link">Interval</span> represents typed interval. Basic operations like comparison,
+            intersection, equality, etc are
+            implemented for this class.<br/>
+            <br/><span class="source_example_title">Example: interval creation</span><br/>
 <pre class="brush: java">
-final Interval&lt;Integer&gt; interval1 = IntervalImpl.newInstance(IntervalLimitImpl.newInstance(10, true), IntervalLimitImpl.newInstance(20, true));
-final Interval&lt;Integer&gt; interval2 = IntervalImpl.newInstance(IntervalLimitImpl.newInstance(12, true), IntervalLimitImpl.newInstance(18, true));
+final Interval&lt;Integer&gt; interval1 = Intervals.newClosedInterval(10, 20);
+final Interval&lt;Integer&gt; interval2 = Intervals.newClosedInterval(12, 19);
 Assert.assertTrue(interval1.contains(interval2));
 </pre>
         </dd>
         <dt>Equalizer</dt>
-        <dd><strong>org.solovyev.common.equals.Equalizer</strong> - interface for comparing two objects on equality<br/>
+        <dd><span class="source_link">Equalizer</span> - interface for comparing two objects on equality. Allows to
+            avoid nullity checking, with
+            several useful implementations: <span class="source_link">CollectionEqualizer</span>, <span
+                    class="source_link">ListEqualizer</span>,
+            <span class="source_link">SameEqualizer</span>, etc<br/>
+            <br/><span class="source_example_title">Example: check if two collections are equal</span><br/>
 <pre class="brush: java">
-if(Objects.areEqual(list1, list2, new CollectionEqualizer&lt;CalculatorHistoryState&gt;(null))){
-    //...
+if(Objects.areEqual(c1, c2, new CollectionEqualizer&lt;CalculatorHistoryState&gt;(null))){
+    // ...
 }
 </pre>
         </dd>
 
+    </dl>
+</div>
+
+<h3><span id="components_text">Component: Text</span></h3>
+
+<div class="left">
+    <dl>
+        <dt>Description</dt>
+        <dd>
+            Strings and everything related to them: mappers, formatters, parsers.
+        </dd>
+        <dt>Installation</dt>
+        <dd>
+
+                                        <pre class="brush: xml">
+&lt;dependency&gt;
+    &lt;groupId&gt;org.solovyev&lt;/groupId&gt;
+    &lt;artifactId&gt;common-text&lt;/artifactId&gt;
+    &lt;version&gt;LATEST_VERSION&lt;/version&gt;
+&lt;/dependency&gt;
+                        </pre>
+        </dd>
+
+        <dt>Usage</dt>
+        <dd>&nbsp;</dd>
+        <dt>Formatter</dt>
+        <dd><span class="source_link">Formatter</span> converts object to string.
+            <br/><span class="source_example_title">Example: enum formatter</span><br/>
+<pre class="brush: java">
+public class EnumMapper&lt;E extends Enum&gt; implements Mapper&lt;E&gt; {
+
+    // ...
+    
+    @Override
+    public String formatValue(@Nullable E value) throws IllegalArgumentException {
+        return value == null ? null : value.name();
+    }
+}
+</pre></dd>
+
+        <dt>Parser</dt>
+        <dd><span class="source_link">Parser</span> converts string to object.
+            <br/><span class="source_example_title">Example: enum parser</span><br/>
+<pre class="brush: java">
+public class EnumMapper&lt;E extends Enum&gt; implements Mapper&lt;E&gt; {
+
+    // ...
+
+    @Override
+    public E parseValue(@Nullable String value) throws IllegalArgumentException {
+        return value == null ? null : (E) Enum.valueOf(enumClass, value);
+    }
+}
+</pre></dd>
+
+        <dt>Mapper</dt>
+        <dd><span class="source_link">Mapper</span> - composition of Parser & Formatter.
+            <br/><span class="source_example_title">Example: boolean mapper</span><br/>
+<pre class="brush: java">
+public class BooleanMapper implements Mapper&lt;Boolean&gt; {
+
+    public BooleanMapper() {
+    }
+
+    @Override
+    public String formatValue(@Nullable Boolean value) throws IllegalArgumentException {
+        return value == null ? null : value.toString();
+    }
+
+    @Override
+    public Boolean parseValue(@Nullable String value) throws IllegalArgumentException {
+        return value == null ? null : Boolean.valueOf(value);
+    }
+}
+</pre></dd>
     </dl>
 </div>
 
@@ -425,7 +514,8 @@ if(Objects.areEqual(list1, list2, new CollectionEqualizer&lt;CalculatorHistorySt
         <dd>
             Source code is available on github: <a target="_blank" href="https://github.com/serso/common">https://github.com/serso/common</a>.<br/>
             Maven users may want to install <strong>javac2-maven-plugin</strong> which can be found in
-            <strong>misc</strong> folder (see <a href="https://github.com/serso/common/blob/master/README">README</a> for more details).<br/>
+            <strong>misc</strong> folder (see <a href="https://github.com/serso/common/blob/master/README">README</a>
+            for more details).<br/>
             Feel free to participate in development, pull requests are highly appreciated.
         </dd>
 
