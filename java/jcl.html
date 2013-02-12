@@ -435,7 +435,9 @@ if(Objects.areEqual(c1, c2, new CollectionEqualizer&lt;CalculatorHistoryState&gt
     <dl>
         <dt>Description</dt>
         <dd>
-            Strings and everything related to them: mappers, formatters, parsers.
+            Strings and everything related to them: mappers, formatters, parsers. Might be useful for storing objects in
+            persistent storage where only
+            limited amount of classes are allowed (<span class="source_link">String</span> is usually among them).
         </dd>
         <dt>Installation</dt>
         <dd>
@@ -452,7 +454,7 @@ if(Objects.areEqual(c1, c2, new CollectionEqualizer&lt;CalculatorHistoryState&gt
         <dt>Usage</dt>
         <dd>&nbsp;</dd>
         <dt>Formatter</dt>
-        <dd><span class="source_link">Formatter</span> converts object to string.
+        <dd><span class="source_link">Formatter</span> converts object to string.<br/>
             <br/><span class="source_example_title">Example: enum formatter</span><br/>
 <pre class="brush: java">
 public class EnumMapper&lt;E extends Enum&gt; implements Mapper&lt;E&gt; {
@@ -464,10 +466,11 @@ public class EnumMapper&lt;E extends Enum&gt; implements Mapper&lt;E&gt; {
         return value == null ? null : value.name();
     }
 }
-</pre></dd>
+</pre>
+        </dd>
 
         <dt>Parser</dt>
-        <dd><span class="source_link">Parser</span> converts string to object.
+        <dd><span class="source_link">Parser</span> converts string to object.<br/>
             <br/><span class="source_example_title">Example: enum parser</span><br/>
 <pre class="brush: java">
 public class EnumMapper&lt;E extends Enum&gt; implements Mapper&lt;E&gt; {
@@ -479,10 +482,11 @@ public class EnumMapper&lt;E extends Enum&gt; implements Mapper&lt;E&gt; {
         return value == null ? null : (E) Enum.valueOf(enumClass, value);
     }
 }
-</pre></dd>
+</pre>
+        </dd>
 
         <dt>Mapper</dt>
-        <dd><span class="source_link">Mapper</span> - composition of Parser & Formatter.
+        <dd><span class="source_link">Mapper</span> - composition of Parser & Formatter.<br/>
             <br/><span class="source_example_title">Example: boolean mapper</span><br/>
 <pre class="brush: java">
 public class BooleanMapper implements Mapper&lt;Boolean&gt; {
@@ -500,7 +504,166 @@ public class BooleanMapper implements Mapper&lt;Boolean&gt; {
         return value == null ? null : Boolean.valueOf(value);
     }
 }
-</pre></dd>
+</pre>
+        </dd>
+    </dl>
+</div>
+
+<h3><span id="components_msg">Component: Message</span></h3>
+
+<div class="left">
+    <dl>
+        <dt>Description</dt>
+        <dd>
+            This component contains classes for working with translatable messages: message interface, default java
+            implementation, message registry, etc.
+        </dd>
+        <dt>Installation</dt>
+        <dd>
+
+                                        <pre class="brush: xml">
+&lt;dependency&gt;
+    &lt;groupId&gt;org.solovyev&lt;/groupId&gt;
+    &lt;artifactId&gt;common-msg&lt;/artifactId&gt;
+    &lt;version&gt;LATEST_VERSION&lt;/version&gt;
+&lt;/dependency&gt;
+                        </pre>
+        </dd>
+
+        <dt>Usage</dt>
+        <dd>&nbsp;</dd>
+        <dt>Message</dt>
+        <dd><span class="source_link">Message</span> interface represents translatable user message. Different
+            implementations of this
+            interface use different ways of storing message strings for different locales (e.g. property files,
+            database, etc)
+            and processing message parameters (though <span class="source_link">java.text.MessageFormat</span> is
+            default).
+            Also this class can be used in conjunction with <span class="source_link">Exception</span> to provide
+            translatable errors.<br/>
+            <br/><span class="source_example_title">Example: message usage in Android</span><br/>
+<pre class="brush: java">
+final String messageText = message.getLocalizedMessage()
+Toast.makeText(application, messageText, Toast.LENGTH_SHORT).show();
+</pre>
+        </dd>
+        <dt>AbstractMessage</dt>
+        <dd><span class="source_link">AbstractMessage</span> - base class for user defined messages: contains fields for
+            message code, message parameters and message level.
+            Only one abstract message should be implemented - it should return message pattern (message string with not
+            set parameters).<br/>
+            <br/><span class="source_example_title">Example: compound message implementation</span><br/>
+<pre class="brush: java">
+public class CompoundMessage extends AbstractMessage {
+
+	@NotNull
+	private final Message compoundMessage;
+
+	private CompoundMessage(@NotNull Message compoundMessage, @NotNull MessageLevel messageLevel, @NotNull List&lt;?&gt; parameters) {
+		super(compoundMessage.getMessageCode(), messageLevel, parameters);
+		this.compoundMessage = compoundMessage;
+	}
+
+	public static CompoundMessage newInstance(@NotNull Message compoundMessage, @NotNull List&lt;? extends Message&gt; messages) {
+		MessageLevel messageLevel = MessageType.info;
+		for (Message message : messages) {
+			messageLevel = Messages.getMessageLevelWithHigherLevel(messageLevel, message.getMessageLevel());
+		}
+		return new CompoundMessage(compoundMessage, messageLevel, messages);
+	}
+
+	@Override
+	protected String getMessagePattern(@NotNull Locale locale) {
+		final StringBuilder result = new StringBuilder();
+
+		result.append(compoundMessage.getLocalizedMessage(locale)).append("\n");
+
+		for (int i = 0; i &lt; getParameters().size(); i++) {
+			if (i != 0) {
+				result.append(",\n");
+			}
+			result.append("{").append(i).append("}");
+		}
+
+		return result.toString();
+	}
+}
+</pre>
+        </dd>
+        <dt>BundleMessage</dt>
+        <dd><span class="source_link">BundleMessage</span> is a message which uses <span class="source_link">ResourceBundle</span>
+            for message translations.
+            See <span class="source_link">Utf8Control</span> class for using UTF-8 encoded properties.<br/>
+            <br/><span class="source_example_title">Example: test implementation</span><br/>
+<pre class="brush: java">
+public class TestBundleMessage extends BundleMessage {
+
+    private TestBundleMessage(@NotNull String messageCode, @NotNull MessageLevel messageLevel, @Nullable Object... parameters) {
+        super("org/solovyev/common/msg/messages", Utf8Control.getInstance(), messageCode, messageLevel, parameters);
+    }
+}
+</pre>
+        </dd>
+
+        <dt>MessageRegistry</dt>
+        <dd><span class="source_link">MessageRegistry</span> is a messages storage. One can add messages to it and get
+            messages from it.
+            Any type of messages are allowed as it should be irrelevant what implementation is passed.
+        </dd>
+    </dl>
+</div>
+
+<h3><span id="components_tree">Component: Tree</span></h3>
+
+<div class="left">
+    <dl>
+        <dt>Description</dt>
+        <dd>
+            Contains classes for working with trees: mutable and immutable interfaces, linked tree implementation.
+        </dd>
+        <dt>Installation</dt>
+        <dd>
+
+                                        <pre class="brush: xml">
+&lt;dependency&gt;
+    &lt;groupId&gt;org.solovyev&lt;/groupId&gt;
+    &lt;artifactId&gt;common-collections-tree&lt;/artifactId&gt;
+    &lt;version&gt;LATEST_VERSION&lt;/version&gt;
+&lt;/dependency&gt;
+                        </pre>
+        </dd>
+
+        <dt>Usage</dt>
+        <dd>&nbsp;</dd>
+        <dt>Tree/MutableTree</dt>
+        <dd><span class="source_link">Tree</span> - immutable tree, contains root and methods for accessing it's children.<br/>
+        <span class="source_link">MutableTree</span> - tree, which can be changed.<br/>
+            <br/><span class="source_example_title">Example: tree usage</span><br/>
+<pre class="brush: java">
+final MutableTree&lt;Integer&gt; result = Trees.newLinkedTree(1);
+
+MutableTreeNode&lt;Integer&gt; root = result.getRoot();
+MutableTreeNode&lt;Integer&gt; child2 = root.addChild(2);
+MutableTreeNode&lt;Integer&gt; child3 = child2.addChild(3);
+
+final Tree&lt;Integer&gt; unmodifiableTree = Trees.unmodifiableTree(result);
+for(TreeNode&lt;Integer&gt; node: unmodifiableTree) {
+    System.out.println(node.getValue());
+}
+</pre>
+        </dd>
+
+        <dt>DepthTreeIterator</dt>
+        <dd><span class="source_link">DepthTreeIterator</span> - <span class="source_link">TreeIterator</span> which implements depth-first tree traversal algorithm.<br/>
+            <br/><span class="source_example_title">Example: depth-first traversal</span><br/>
+<pre class="brush: java">
+for ( TreeIterator&lt;Integer&gt; it = Trees.newDepthTreeIterator(tree); it.hasNext(); ) {
+    final TreeNode&lt;Integer&gt; node  = it.next();
+    Assert.assertEquals(node.getDepth(), it.getDepth());
+    System.out.println(it.getDepth() + " -&gt;" + node.getValue());
+}
+</pre>
+        </dd>
     </dl>
 </div>
 
