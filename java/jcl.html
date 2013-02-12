@@ -116,17 +116,19 @@
         <dd><a href="#components_msg" style="margin-left: 1em">Message</a></dd>
 
         <dt>3.4</dt>
-        <dd><a href="#components_tree" style="margin-left: 1em">Tree</a></dd>
+        <dd><a href="#components_listeners" style="margin-left: 1em">Listeners</a></dd>
 
         <dt>3.5</dt>
-        <dd><a href="#components_multiset" style="margin-left: 1em">Multi Set</a></dd>
-
-        <dt>3.6</dt>
-        <dd><a href="#components_core_jodatime" style="margin-left: 1em">Core Joda-time</a></dd>
-
-        <dt>3.7</dt>
         <dd><a href="#components_security" style="margin-left: 1em">Security</a></dd>
 
+        <dt>3.6</dt>
+        <dd><a href="#components_tree" style="margin-left: 1em">Tree</a></dd>
+
+        <dt>3.7</dt>
+        <dd><a href="#components_multiset" style="margin-left: 1em">Multi Set</a></dd>
+
+        <dt>3.8</dt>
+        <dd><a href="#components_core_jodatime" style="margin-left: 1em">Core Joda-time</a></dd>
 
         <dt>4.</dt>
         <dd><a href="#source_code">Source code</a></dd>
@@ -218,6 +220,16 @@
                 href="#components_msg">More...</a>
         </dd>
 
+        <dt>Listeners</dt>
+        <dd>
+            Contains classes related to Listener/Observer pattern. <a href="#components_listeners">More...</a>
+        </dd>
+
+        <dt>Security</dt>
+        <dd>
+            Contains security abstraction over javax.crypto package. <a href="#components_security">More...</a>
+        </dd>
+
         <dt>Tree</dt>
         <dd>
             Contains interface and implementation for tree data structure missing in JDK and Guava. <a
@@ -234,16 +246,6 @@
         <dd>
             Contains several core classes which depend on joda-time library. <a
                 href="#components_core_jodatime">More...</a>
-        </dd>
-
-        <dt>Security</dt>
-        <dd>
-            Contains security abstraction over javax.crypto package. <a href="#components_security">More...</a>
-        </dd>
-
-        <dt>Listeners</dt>
-        <dd>
-            Contains everything related to Listener/Observer pattern. <a href="#components_listeners">More...</a>
         </dd>
 
 
@@ -609,6 +611,52 @@ public class TestBundleMessage extends BundleMessage {
         <dd><span class="source_link">MessageRegistry</span> is a messages storage. One can add messages to it and get
             messages from it.
             Any type of messages are allowed as it should be irrelevant what implementation is passed.
+        </dd>
+    </dl>
+</div>
+
+<h3><span id="components_listeners">Component: Listeners</span></h3>
+
+<div class="left">
+    <dl>
+        <dt>Description</dt>
+        <dd>
+            Contains classes related to Listener/Observer pattern: containers for listeners, event bus, etc.
+        </dd>
+        <dt>Installation</dt>
+        <dd>
+
+                                        <pre class="brush: xml">
+&lt;dependency&gt;
+    &lt;groupId&gt;org.solovyev&lt;/groupId&gt;
+    &lt;artifactId&gt;common-listeners&lt;/artifactId&gt;
+    &lt;version&gt;LATEST_VERSION&lt;/version&gt;
+&lt;/dependency&gt;
+                        </pre>
+        </dd>
+        <dt>Usage</dt>
+        <dd>&nbsp;</dd>
+        <dt>JListeners/JEventListeners</dt>
+        <dd><span class="source_link">JListeners</span> - container for listeners, all methods in implementation should be synchronized properly.
+            Any type of listeners can be stored in it and can be obtained through <span class="source_link">JListeners#getListeners</span>
+            or <span class="source_link">JListeners#getListenersOfType</span> methods.<br/>
+            <span class="source_link">JEventListeners</span> - container for event listeners (see <span class="source_link">JEventListener</span>), all methods in implementation should be synchronized properly.
+            Listeners of different event types can be stored in it, but only those which support type of fired event will receive it by calling <span class="source_link">JEventListener#onEvent</span> method.
+            Depending on implementation this class may store hard or weak references to listeners, may run on caller's thread or may have several (or 1) background treads for firing events.<br/>
+            <br/><span class="source_example_title">Example: JEventListeners</span><br/>
+<pre class="brush: java">
+JEventListeners&lt;JEventListener&lt;?&gt;, JEvent&gt; listeners = Listeners.newEventListenersBuilder().onCallerThread().withHardReferences().create();
+
+final TestEventListener1 l1 = new TestEventListener1();
+final TestEventListener2 l2 = new TestEventListener2();
+final TestEventListener3 l3 = new TestEventListener3();
+
+listeners.addListener(l1);
+listeners.addListener(l2);
+listeners.addListener(l3);
+
+listeners.fireEvent(new TestEvent1());
+</pre>
         </dd>
     </dl>
 </div>
