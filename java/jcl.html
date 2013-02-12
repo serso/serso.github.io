@@ -122,7 +122,7 @@
         <dd><a href="#components_multiset" style="margin-left: 1em">Multi Set</a></dd>
 
         <dt>3.6</dt>
-        <dd><a href="#components_corejodatime" style="margin-left: 1em">Core Joda-time</a></dd>
+        <dd><a href="#components_core_jodatime" style="margin-left: 1em">Core Joda-time</a></dd>
 
         <dt>3.7</dt>
         <dd><a href="#components_security" style="margin-left: 1em">Security</a></dd>
@@ -663,6 +663,72 @@ for ( TreeIterator&lt;Integer&gt; it = Trees.newDepthTreeIterator(tree); it.hasN
     System.out.println(it.getDepth() + " -&gt;" + node.getValue());
 }
 </pre>
+        </dd>
+    </dl>
+</div>
+
+<h3><span id="components_multiset">Component: Multi Set</span></h3>
+
+<div class="left">
+    <dl>
+        <dt>Description</dt>
+        <dd>
+            Contains classes for working with multi sets. Multi set is a set with duplicates, depending on implementation this class may contain several instances of equal objects or may contain only one instance with counter.
+        </dd>
+        <dt>Installation</dt>
+        <dd>
+
+                                        <pre class="brush: xml">
+&lt;dependency&gt;
+    &lt;groupId&gt;org.solovyev&lt;/groupId&gt;
+    &lt;artifactId&gt;common-collections-multiset&lt;/artifactId&gt;
+    &lt;version&gt;LATEST_VERSION&lt;/version&gt;
+&lt;/dependency&gt;
+                        </pre>
+        </dd>
+        <dt>Usage</dt>
+        <dd>&nbsp;</dd>
+        <dt>MultiSet<br/>ManyInstancesMultiSet<br/>OneInstanceMultiSet</dt>
+        <dd><span class="source_link">MultiSet</span> - set with duplicates, depending on implementation this class may contain several instances of equal objects (<span class="source_link">ManyInstancesMultiSet</span>)
+            or may contain only one instance with counter (<span class="source_link">OneInstanceMultiSet</span>).
+            <br/>
+            <br/><span class="source_example_title">Example: multi set</span><br/>
+<pre class="brush: java">
+final MultiSet&lt;String&gt; m = MultiSets.newManyInstancesMultiSet();
+// or final MultiSet&lt;String&gt; m = MultiSets.newOneInstanceMultiSet();
+
+Assert.assertEquals(0, m.count("1"));
+Assert.assertEquals(0, m.count("2"));
+Assert.assertEquals(0, m.count("3"));
+
+m.add("1", 2);
+Assert.assertEquals(2, m.count("1"));
+
+m.add("2", 22);
+Assert.assertEquals(22, m.count("2"));
+</pre>
+        </dd>
+   </dl>
+</div>
+
+<h3><span id="components_core_jodatime">Component: Core Joda-Time</span></h3>
+
+<div class="left">
+    <dl>
+        <dt>Description</dt>
+        <dd>
+            Contains several classes for working with joda-time.
+        </dd>
+        <dt>Installation</dt>
+        <dd>
+
+                                        <pre class="brush: xml">
+&lt;dependency&gt;
+    &lt;groupId&gt;org.solovyev&lt;/groupId&gt;
+    &lt;artifactId&gt;common-core-jodatime&lt;/artifactId&gt;
+    &lt;version&gt;LATEST_VERSION&lt;/version&gt;
+&lt;/dependency&gt;
+                        </pre>
         </dd>
     </dl>
 </div>
