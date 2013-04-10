@@ -194,6 +194,11 @@ h2 {
     font-weight: bold;
 }
 
+.documentation {
+    background-color: #eeeeee;
+    font-family: monospace;
+}
+
 .source_link {
     font-weight: bold;
 }

@@ -1,0 +1,336 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>se.solovyev - CV</title>
+
+    <script type="text/javascript" src="/resources/js/jquery-1.6.1.js"></script>
+    <script type="text/javascript" src="/resources/js/jquery.countdown.package-1.5.9/jquery.countdown.pack.js"></script>
+    <script type="text/javascript" src="/resources/js/syntaxhighlighter/shCore.js"></script>
+    <script type="text/javascript" src="/resources/js/syntaxhighlighter/shBrushXml.js"></script>
+    <script type="text/javascript" src="/resources/js/syntaxhighlighter/shBrushJava.js"></script>
+
+    <script type="text/javascript">
+        if (jQuery) {
+            $(document).ready(function () {
+                // syntax highlighting
+                SyntaxHighlighter.all();
+
+                // slided content
+                $(".slided_content").hide();
+
+                $("a.slided").click(
+                        function (event) {
+
+                            // Prevent the default event.
+                            event.preventDefault();
+
+
+                            var nextSibling = $(this).next();
+
+                            // Toggle the slide based on its current
+                            // visibility.
+                            if (nextSibling.is(":visible")) {
+
+                                // Hide - slide up.
+                                nextSibling.slideUp(500);
+
+                            } else {
+
+                                // Show - slide down.
+                                nextSibling.slideDown(500);
+
+                            }
+                        }
+                );
+            });
+        }
+
+    </script>
+
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-24192724-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+
+    </script>
+
+    <link rel="stylesheet" href="/resources/js/jquery.countdown.package-1.5.9/jquery.countdown.css"/>
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Crimson+Text:regular,600&v1' type='text/css'>
+
+    <link rel="stylesheet" href="/resources/css/main.css" type="text/css"/>
+    <link rel="stylesheet" href="/resources/css/syntaxhighlighter/shCore.css" type="text/css"/>
+    <link rel="stylesheet" href="/resources/css/syntaxhighlighter/shCoreDefault.css" type="text/css"/>
+
+    <link rel="shortcut icon" href="/resources/images/favicon.ico" type="image/x-icon"/>
+
+</head>
+<body>
+
+<div id="page">
+<div id="container">
+<div id="header">
+    <div id="se_solovyev_img">
+        <a href="/" class="nohover">
+            <img src="/resources/images/header.png" alt="se.solovyev" height="202" width="879" border="0">
+        </a>
+    </div>
+</div>
+<div id="center">
+<div id="content">
+
+<h2>Do you really need a Service in Android?</h2>
+
+<h3>Contents</h3>
+
+<div class="left">
+
+    <dl>
+
+        <dt>1.</dt>
+        <dd><a href="#introduction">Introduction</a></dd>
+
+        <dt>2.</dt>
+        <dd><a href="#problem">Problem and possible solutions</a></dd>
+
+        <dt>3.</dt>
+        <dd><a href="#solution">Solution</a></dd>
+
+        <dt>4.</dt>
+        <dd><a href="#when_to_use_service">When to use Service?</a></dd>
+
+        <dt>5.</dt>
+        <dd><a href="#the_end">The end</a></dd>
+
+    </dl>
+</div>
+
+<h3><span id="introduction">Introduction</span></h3>
+
+<div class="left">
+    <dl>
+
+        <dt></dt>
+        <dd>
+            I've been developing Android apps for quite a long time and one question has always been
+            eating me: when and why do I need to use <span
+                class="source_link">android.app.Service</span>?
+            The question might be simple at first glance but is more complicated after detailed examine.
+        </dd>
+    </dl>
+</div>
+
+<h3><span id="problem">Problem and possible solutions</span></h3>
+
+<div class="left">
+    <dl>
+
+        <dt></dt>
+        <dd>
+            Let's say that we want to create an app with some heavy background work, e.g. messenger or
+            image gallery. For messenger background work is to communicate with remote service
+            (send and receive messages), for image gallery - to download images (as we know from ICS
+            this work must not be done on main app thread as it will cause crash).
+            How can we implement this? Obvious solutions are:
+            <ol>
+                <li>Using <span class="source_link">android.os.AsyncTask</span></li>
+                <li>Using <span class="source_link">android.app.Service</span></li>
+                <li>Writing own solution - manual thread management (Threads, ExecutorServices, etc)
+                </li>
+            </ol>
+            Of course the experienced developer immediately says: AsyncTask is not designed for long operations. And he
+            is correct, here is the
+            part of documentation for AsyncTask (<a
+                href="http://developer.android.com/reference/android/os/AsyncTask.html">source</a>):<br/>
+            <br/>
+                            <span class="documentation">
+                                AsyncTask is designed to be a helper class around Thread and Handler and does not constitute a generic threading framework.
+                                AsyncTasks should ideally be used for short operations (a few seconds at the most.) If you need to keep threads running for long periods of time, it is highly recommended you use the various APIs provided by the java.util.concurrent package such as Executor, ThreadPoolExecutor and FutureTask.
+                            </span>
+            <br/>
+            <br/>
+            OK, first solution is bad, what else do we have:
+            <ol>
+                <li><span style="text-decoration: line-through">Using <span
+                        class="source_link">android.os.AsyncTask</span></span></li>
+                <li>Using <span class="source_link">android.app.Service</span></li>
+                <li>Writing own solution - manual thread management (Threads, ExecutorServices, etc)
+                </li>
+            </ol>
+            Let's read documentation for <span class="source_link">android.app.Service</span> (<a
+                href="http://developer.android.com/reference/android/app/Service.html">source</a>):
+            <br/>
+            <br/>
+                            <span class="documentation">
+                                A Service is an application component representing either an application's desire to perform a longer-running operation while not interacting with the user or to supply functionality for other applications to use
+                            </span>
+            <br/>
+            <br/>
+            That's what we were looking for - long running operations in background. Cool, let's start to code:
+                            <pre class="brush: java">
+public final class DownloadImageService extends Service {
+
+    @Override
+    public IBinder onBind(Intent intent) {
+        return null;
+    }
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+
+        // initialization logic
+    }
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        return super.onStartCommand(intent, flags, startId);
+
+        // start logic
+    }
+}
+                            </pre>
+            Let's say we need to load some data (e.g. images from remote server):
+                            <pre class="brush: java">
+
+    @Nonnull
+    private static final String EXTRA_URL = "url";
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        int result = super.onStartCommand(intent, flags, startId);
+        downloadImage(intent.getStringExtra(EXTRA_URL));
+        return result;
+    }
+
+    private void downloadImage(@Nonnull String url) {
+        // downloading
+    }
+                            </pre>
+            Compile, package, start - bump - <span class="source_link">android.os.NetworkOnMainThreadException</span>.
+            WTF?
+            It turns out that Android service is working on the main application thread (<a
+                href="http://developer.android.com/reference/android/app/Service.html">source</a>):
+            <br/>
+            <br/>
+                            <span class="documentation">
+                                Note that services, like other application objects, run in the main thread of their hosting process.
+                            </span>
+            <br/>
+            <br/>
+            OK, then we need to create a manual background thread management class and use it inside the service...
+            Stop. But why do we need service after all?
+            It's much easier to communicate with local class, we can use callbacks/listeners with local class and we
+            cannot use it all with service.
+            Service binding takes some time and if we want to use local service we need to wait until it will be bound
+            which makes code less clean.
+            Service only accepts input which is parcelable (as we need to put in into Intent (for remote service) or use
+            AIDL (for local service)).
+            And we've come to a conclusion that only one right way of implementing background task is to create own
+            solution
+            (as Android doesn't provide it out of the box):
+            <ol>
+                <li><span style="text-decoration: line-through">Using <span
+                        class="source_link">android.os.AsyncTask</span></span></li>
+                <li><span style="text-decoration: line-through">Using <span
+                        class="source_link">android.app.Service</span></span></li>
+                <li>Writing own solution - manual thread management (Threads, ExecutorServices, etc)
+                </li>
+            </ol>
+
+            Summarizing everything above:
+            <ol>
+                <li>Android Service doesn't help you to create background task</li>
+                <li>Most probably you don't need Service at all</li>
+                <li>Sometimes documentation is misleading and you should not always rely on it</li>
+            </ol>
+        </dd>
+    </dl>
+</div>
+
+<h3><span id="solution">Solution</span></h3>
+
+<div class="left">
+    <dl>
+
+        <dt></dt>
+        <dd>
+            I can suggest next solution (included in <a
+                href="https://github.com/serso/common/tree/master/tasks/src/main/java/org/solovyev/tasks">Java Common
+            Library</a> and <a
+                href="https://github.com/serso/android-common/tree/master/tasks/src/main/java/org/solovyev/android/tasks">Android
+            Common
+            Library</a>): <a
+                href="https://github.com/serso/common/blob/master/tasks/src/main/java/org/solovyev/tasks/TaskService.java">TaskService</a>
+            interface and it's
+            <a href="https://github.com/serso/common/blob/master/tasks/src/main/java/org/solovyev/tasks/TaskServiceImpl.java">implementation</a>.
+            Utility class <a
+                href="https://github.com/serso/common/blob/master/tasks/src/main/java/org/solovyev/tasks/Tasks.java">Tasks</a>
+            hides the link between implementation and interface and provides methods for creation of <span
+                class="source_link">TaskService</span>.
+            I hope that these classes are self-explanatory but if you have any questions - ask them in the comments.
+        </dd>
+    </dl>
+</div>
+
+<h3><span id="when_to_use_service">When to use Service?</span></h3>
+
+<div class="left">
+    <dl>
+
+        <dt></dt>
+        <dd>
+            The last question to be answered - when do we really need <span class="source_link">Service</span>?<br/>
+            I can name only 2 possible reasons to use it:
+            <ol>
+                <li>When we need to say Android that our application is doing some important things in background and
+                    should not be killed.
+                    To achieve this we can run Service as foreground via <a
+                            href="http://developer.android.com/reference/android/app/Service.html#startForeground%28int,%20android.app.Notification%29">startForeground</a>
+                    method
+                </li>
+                <li>When we need to provide some functionality of our app to the other app. This can be done via <a
+                        href="http://developer.android.com/guide/topics/manifest/service-element.html#exported">exporting
+                    service in manifest file</a></li>
+            </ol>
+            That's all. If you don't need to achieve one of these goals - you don't need Service at all.
+        </dd>
+    </dl>
+</div>
+
+<h3><span id="the_end">The end</span></h3>
+
+<div class="left">
+    <dl>
+
+        <dt></dt>
+        <dd>
+            Hope this article helped someone to understand better how to implement background task management
+            and reviles the common misunderstanding of Android services. If you have any questions you can ask them in the comments.
+            <br/>
+            <br/>
+            Code responsible and may the force be with you.
+        </dd>
+    </dl>
+</div>
+
+</div>
+</div>
+<div id="footer">
+    <a href="/">se.solovyev</a>, 2013
+</div>
+</div>
+</div>
+
+</body>
+</html>
