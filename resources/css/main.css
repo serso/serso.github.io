@@ -142,6 +142,10 @@ h2 {
 	margin-bottom: 1em;
 }
 
+.languages_list ul {
+  list-style-type: none;
+}
+
 #java_exp_countdown {
 	background-color: transparent;
 	border: 0;
