@@ -43,11 +43,12 @@
 				if ($.countdown) {
 					$('#java_exp_countdown').countdown(
 					{	since: new Date(2008, 10 - 1, 29),
-						format: 'YDHMS',
-						layout: '<a href="time.html">{y<}{yn} {yl}{y>} ' +
-								'{o<}{on} {ol}{o>} ' +
-								'{d<}{dn} {dl}{d>} ' +
-								'{hnn}{sep}{mnn}{sep}{snn}</a>'});
+						format: 'Y',
+						layout: '{y<}{yn} {yl}{y>}'});
+					$('#my_age').countdown(
+					{	since: new Date(1988, 4 - 1, 03),
+						format: 'Y',
+						layout: '{y<}{yn} {yl}{y>}'});
 				}
 			});
 		}
@@ -106,52 +107,139 @@
 						<dt>Name</dt>
 						<dd>Sergey Solovyev</dd>
 
-						<dt>Also know as</dt>
+						<dt>Also known as</dt>
 						<dd>se.solovyev, serso</dd>
 
 						<dt>Age</dt>
-						<dd>25 (born on the 9th of March 1988)</dd>
+						<dd><span id="my_age"><noscript>28 (03.09.1988)</noscript></span></dd>
 
 						<dt>Sex</dt>
 						<dd>Male</dd>
 
-						<dt>Born in</dt>
+						<dt>From</dt>
 						<dd>
 							<a target="_blank" href="https://maps.google.se/maps?q=Saint%20Petersburg,%20Russia">St.
 								Petersburg, Russia</a>
 						</dd>
 
-						<dt>Live in</dt>
+						<dt>Current location</dt>
 						<dd>
-							<a target="_blank" href="https://maps.google.se/maps?q=Link%C3%B6ping,%20Sweden">Linköping,
-								Sweden</a>
+							<a target="_blank" href="https://maps.google.se/maps?q=Link%C3%B6ping,%20Sweden">Linköping, Sweden</a>
 						</dd>
 
 						<dt>Languages</dt>
-						<dd>Russian, English</dd>
+						<dd>Russian (native)<br/>English (fluent)<br/>Swedish (intermediate)</dd>
 
-						<dt>Interested in</dt>
-						<dd>Programming, music, sport,<br/>travelling, reading</dd>
+						<dt>Interests</dt>
+						<dd>Programming, rock climbing, chess, football</dd>
 
 						<dt>Personal skills</dt>
 						<dd>Hardworking, quick learner, enthusiastic</dd>
 
 						<dt><img src="resources/images/facebook-logo-sm.png" alt="facebook-logo"></dt>
-						<dd><a target="_blank" href="http://www.facebook.com/se.solovyev">http://www.facebook.com/se.solovyev</a>
+						<dd><a target="_blank" href="http://www.facebook.com/se.solovyev">facebook.com/se.solovyev</a>
 						</dd>
 
 						<dt><img src="resources/images/vkontakte-logo-sm.png" alt="vkontakte-logo"></dt>
-						<dd><a target="_blank" href="http://www.vk.com/se.solovyev">http://www.vk.com/se.solovyev</a>
+						<dd><a target="_blank" href="http://www.vk.com/se.solovyev">vk.com/se.solovyev</a>
 						</dd>
 
 						<dt><img src="resources/images/github-logo-xsm.png" alt="github-logo"></dt>
-						<dd><a target="_blank" href="http://github.com/serso">http://github.com/serso</a></dd>
+						<dd><a target="_blank" href="https://github.com/serso">github.com/serso</a></dd>
 
 					</dl>
 				</div>
 
 				<div id="face" class="right">
 					<img src="resources/images/face.png" alt="Face">
+				</div>
+
+				<h2>Work</h2>
+
+				<div class="left">
+
+					<dl>
+						<dt>Jan 2014 - Current</dt>
+						<dd><a href="http://www.opera.com/" target="_blank">Opera Software</a></dd>
+
+						<dt>Sep 2012 - Dec 2013</dt>
+						<dd><a href="http://www.kaspersky.com/" target="_blank">Kaspersky Lab</a></dd>
+
+						<dt>Nov 2008 - May 2012</dt>
+						<dd><a target="_blank" href="http://www.short.ch">Short SPb</a><br/>
+							Front-end and back office solutions for banks and insurance companies
+						</dd>
+					</dl>
+
+				</div>
+
+				<h2>My projects</h2>
+
+				<div class="left">
+					<dl>
+						<dt>Github repo</dt>
+						<dd><a target="_blank" href="https://github.com/serso">github.com/serso</a></dd>
+					</dl>
+					<dl>
+						<dt>Play Store apps</dt>
+						<dd><a target="_blank" href="https://play.google.com/store/apps/developer?id=Sergey+Solovyev">link</a></dd>
+					</dl>
+				</div>
+
+				<h3><a target="_blank" href="https://github.com/serso/android-checkout">Checkout (Android In-App Billing Library)</a></h3>
+				<div class="left">
+					<dl>
+						<dt><img src="resources/images/checkout-icon-small.png" alt="Checkout icon"></dt>
+						<dd>Android library that helps developers to integrate in-app purchases.</dd>
+						<dd>Play Store: <a target="_blank" href="https://play.google.com/store/apps/details?id=org.solovyev.android.checkout.app">link</a></dd>
+						<dd>Source code: <a target="_blank" href="https://github.com/serso/android-checkout">github.com/serso/android-checkout</a></dd>
+					</dl>
+				</div>
+
+				<h3><a target="_blank" href="https://play.google.com/store/apps/details?id=org.solovyev.android.calculator">Calculator++</a></h3>
+				<div class="left">
+					<dl>
+						<dt><img src="resources/images/calculatorpp-icon-small.png" alt="Calculator++ icon"></dt>
+						<dd>Calculator++ is an advanced, modern and easy to use scientific calculator.</dd>
+						<dd>Play Store: <a target="_blank" href="https://play.google.com/store/apps/details?id=org.solovyev.android.calculator">link</a></dd>
+						<dd>Source code: <a target="_blank" href="https://github.com/serso/android-calculatorpp">github.com/serso/android-calculatorpp</a></dd>
+					</dl>
+				</div>
+
+				<h3><a target="_blank" href="https://play.google.com/store/apps/details?id=org.solovyev.android.dictionary.lexin">Lexin</a></h3>
+				<div class="left">
+					<dl>
+						<dt><img src="resources/images/lexin-icon-small.png" alt="Lexin icon"></dt>
+						<dd>Online Swedish-English dictionary.</dd>
+						<dd>Play Store: <a target="_blank" href="https://play.google.com/store/apps/details?id=org.solovyev.android.dictionary.lexin">link</a></dd>
+					</dl>
+				</div>
+
+				<h3><a target="_blank" href="https://github.com/serso/android-linear-layout-manager">Linear Layout Manager (Android Library)</a></h3>
+				<div class="left">
+					<dl>
+						<dt></dt>
+						<dd>Implementation of LinearLayoutManager that can wrap its contents.</dd>
+						<dd>Source code: <a target="_blank" href="https://github.com/serso/android-linear-layout-manager">github.com/serso/android-linear-layout-manager</a></dd>
+					</dl>
+				</div>
+
+				<h3><a target="_blank" href="https://play.google.com/store/apps/details?id=org.solovyev.android.dictionary.forvo">Say it right!</a></h3>
+				<div class="left">
+					<dl>
+						<dt><img src="resources/images/forvo-icon-small.png" alt="Say it right! icon"></dt>
+						<dd>Online pronunciation guide.</dd>
+						<dd>Play Store: <a target="_blank" href="https://play.google.com/store/apps/details?id=org.solovyev.android.dictionary.forvo">link</a></dd>
+					</dl>
+				</div>
+
+				<h3><a target="_blank" href="https://play.google.com/store/apps/details?id=org.solovyev.android.duktig">Duktig (Calculator)</a></h3>
+				<div class="left">
+					<dl>
+						<dt><img src="resources/images/duktig-icon-small.png" alt="Duktig icon"></dt>
+						<dd>Experimental calculator on math.js.</dd>
+						<dd>Play Store: <a target="_blank" href="https://play.google.com/store/apps/details?id=org.solovyev.android.duktig">link</a></dd>
+					</dl>
 				</div>
 
 				<h2>Education</h2>
@@ -212,139 +300,43 @@
 
 				</div>
 
-				<h2>Work</h2>
-
-				<div class="left">
-
-					<dl>
-						<dt>Jan 2014 - Current</dt>
-						<dd><a href="http://www.opera.com/" target="_blank">Opera Software</a></dd>
-
-						<dt>Sep 2012 - Dec 2013</dt>
-						<dd><a href="http://www.kaspersky.com/" target="_blank">Kaspersky Lab</a></dd>
-
-						<dt>Nov 2008 - May 2012</dt>
-						<dd><a target="_blank" href="http://www.short.ch">Short SPb</a><br/>
-							Front-end and back office solutions for banks and insurance companies
-						</dd>
-					</dl>
-
-				</div>
-
-				<h2>Pet projects</h2>
-
-				<h3><a target="_blank"
-					   href="https://play.google.com/store/apps/details?id=org.solovyev.android.messenger">Messenger++</a>
-				</h3>
-
-				<div class="left">
-
-					<dl>
-						<dt>1.</dt>
-						<dd>
-							Messenger++ is a multi-protocol instant messaging client for Android OS.<br/>
-							It's free and open-source.<br/>
-							<br/>
-							<a target="_blank"
-							   href="https://play.google.com/store/apps/details?id=org.solovyev.android.messenger">
-								<img src="resources/images/messengerpp-icon-small.png" alt="Messenger++ icon">
-							</a>
-							<br/>
-						</dd>
-
-						<dt>&nbsp;</dt>
-						<dd>Source code: <a target="_blank" href="https://github.com/serso/android-messengerpp">github.com/serso/android-messengerpp</a>
-						</dd>
-					</dl>
-
-				</div>
-
-				<h3><a target="_blank"
-					   href="https://play.google.com/store/apps/details?id=org.solovyev.android.calculator">Calculator++</a>
-				</h3>
-
-				<div class="left">
-
-					<dl>
-						<dt>2.</dt>
-						<dd>
-							Calculator++ is an advanced, modern and easy to use scientific calculator.<br/>
-							<br/>
-							<a target="_blank"
-							   href="https://play.google.com/store/apps/details?id=org.solovyev.android.calculator">
-								<img src="resources/images/calculatorpp-icon-small.png" alt="Calculator++ icon">
-							</a>
-							<br/>
-						</dd>
-
-						<dt>&nbsp;</dt>
-						<dd>Source code: <a target="_blank" href="https://github.com/serso/android-calculatorpp">github.com/serso/android-calculatorpp</a>
-						</dd>
-					</dl>
-
-				</div>
-
-				<h3><a target="_blank" href="https://play.google.com/store/apps/details?id=org.solovyev.android.notes">Notes++</a>
-				</h3>
-
-				<div class="left">
-
-					<dl>
-
-						<dt>3.</dt>
-						<dd>
-							Notes++ helps you to organize your notes.<br/>
-							<br/>
-							<a target="_blank"
-							   href="https://play.google.com/store/apps/details?id=org.solovyev.android.notes">
-								<img src="resources/images/notes-icon-black-small.png" alt="Notes++ icon">
-							</a>
-							<br/>
-						</dd>
-					</dl>
-
-				</div>
-
 				<h2>Skills</h2>
 
 				<div class="left">
 					<dl>
 						<dt>Programming languages</dt>
-						<dd>
-							<ul class="languages_list">
-								<li class="language">
-									<strong>Java</strong> (<span id="java_exp_countdown"></span>
-									<noscript>8+ years of work experience</noscript>
-									)<br/>
-									My main programming language that I use every day for almost a decade. I started<br/>
-									as a Java EE developer and during that period I learned a lot about the language,<br/>
-									the virtual machine and their relationship. Later on my focus switched to Android<br/>
-									where I continued (and continue) mastering the language.<br/>
-									Most of <a target="_blank" href="https://github.com/serso">my open source projects</a> are written in Java.
-								</li>
+						<dd><strong>Java</strong></dd>
+						<dt></dt>
+						<dd>My main programming language that I use every day for almost a decade. I started<br/>
+							as a Java EE developer and during that period I learned a lot about the language,<br/>
+							the virtual machine and their relationship. Later on my focus switched to Android<br/>
+							where I continued (and continue) mastering the language.<br/>
+							Most of <a target="_blank" href="https://github.com/serso">my open source projects</a> are written in Java.<br/><br/></dd>
 
-								<li class="language"><strong>C/C++</strong><br/>
-									Mostly academic knowledge. Have read some code of Chromium,<br/>
-									have written and debugged a bit of C++ code at Opera Software.
-								</li>
+						<dt></dt>
+						<dd><strong>C/C++</strong></dd>
+						<dt></dt>
+						<dd>Mostly academic knowledge. Have read some code of Chromium,<br/>
+							have written and debugged a bit of C++ code at Opera Software.<br/><br/></dd>
 
-								<li class="language"><strong>Python</strong><br/>
-									If I need scripting I choose Python :)
-								</li>
+						<dt></dt>
+						<dd><strong>Python</strong></dd>
+						<dt></dt>
+						<dd>If I need scripting I choose Python :)<br/><br/></dd>
 
-								<li class="language"><strong>Matlab</strong><br/>
-									Only academic experience. My thesis was written fully in Matlab:<br/>
-									<a target="_blank" href="https://github.com/serso/dde-param-estimation">Parameter
-										estimation of delay differential equations</a>
-								</li>
+						<dt></dt>
+						<dd><strong>Matlab</strong></dd>
+						<dt></dt>
+						<dd>Only academic experience. My thesis was written fully in Matlab:<br/>
+							<a target="_blank" href="https://github.com/serso/dde-param-estimation">Parameter
+								estimation of delay differential equations</a>.<br/><br/></dd>
 
-								<li class="language"><strong>JavaScript/PHP/HTML</strong><br/>
-									I did some professional frontend development when worked at Short Spb.<br/>
-									Other than that I've designed and developed <a target="_blank" href="https://github.com/serso/se.solovyev.org">the current web page</a> and<br/>
-									<a target="_blank" href="https://github.com/serso/ka.serova.org">ka.serova.org</a> web store.
-								</li>
-							</ul>
-						</dd>
+						<dt></dt>
+						<dd><strong>JavaScript/PHP/HTML</strong></dd>
+						<dt></dt>
+						<dd>I did some professional frontend development when worked at Short Spb.<br/>
+							Other than that I've designed and developed <a target="_blank" href="https://github.com/serso/se.solovyev.org">the current web page</a> and<br/>
+							<a target="_blank" href="https://github.com/serso/ka.serova.org">ka.serova.org</a> web store.<br/><br/></dd>
 
 						<dt>Build systems</dt>
 						<dd>Gradle*, Maven</dd>
@@ -387,11 +379,11 @@
 					<dd><a href="skype:se.solovyev?call">se.solovyev</a></dd>
 
 					<dt><img src="resources/images/facebook-logo-sm.png" alt="facebook-logo"></dt>
-					<dd><a target="_blank" href="http://www.facebook.com/se.solovyev">http://www.facebook.com/se.solovyev</a>
+					<dd><a target="_blank" href="http://www.facebook.com/se.solovyev">facebook.com/se.solovyev</a>
 					</dd>
 
 					<dt><img src="resources/images/vkontakte-logo-sm.png" alt="vkontakte-logo"></dt>
-					<dd><a target="_blank" href="http://www.vk.com/se.solovyev">http://www.vk.com/se.solovyev</a></dd>
+					<dd><a target="_blank" href="http://www.vk.com/se.solovyev">vk.com/se.solovyev</a></dd>
 				</dl>
 
 			</div>

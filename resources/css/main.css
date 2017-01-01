@@ -81,7 +81,6 @@ div#footer {
 	color: #666666; /*	color: #571203;*/
 	clear: left;
 	float: left;
-	font-weight: bold;
 	margin: 0;
 	padding: 0 0.5em 0 0;
 	text-align: right;
@@ -114,7 +113,7 @@ h1, h2, h3 {
 h1, h2, h3 {
 	clear: both;
 	padding-bottom: 0.5em;
-	padding-top: 0.5em;
+	padding-top: 1.5em;
 }
 
 h1 {
@@ -138,15 +137,7 @@ h2 {
 	float: left;
 }
 
-.languages_list li.language {
-	margin-bottom: 1em;
-}
-
-.languages_list ul {
-  list-style-type: none;
-}
-
-#java_exp_countdown {
+#java_exp_countdown, #my_age {
 	background-color: transparent;
 	border: 0;
 }
