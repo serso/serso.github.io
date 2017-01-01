@@ -41,10 +41,6 @@
 						);
 
 				if ($.countdown) {
-					$('#java_exp_countdown').countdown(
-					{	since: new Date(2008, 10 - 1, 29),
-						format: 'Y',
-						layout: '{y<}{yn} {yl}{y>}'});
 					$('#my_age').countdown(
 					{	since: new Date(1988, 4 - 1, 03),
 						format: 'Y',
@@ -111,7 +107,7 @@
 						<dd>se.solovyev, serso</dd>
 
 						<dt>Age</dt>
-						<dd><span id="my_age"><noscript>28 (03.09.1988)</noscript></span></dd>
+						<dd><span id="my_age"><noscript>28</noscript></span> (03.09.1988)</dd>
 
 						<dt>Sex</dt>
 						<dd>Male</dd>
@@ -154,6 +150,27 @@
 					<img src="resources/images/face.png" alt="Face">
 				</div>
 
+				<h2>Summary</h2>
+
+				<div class="left">
+					<dl>
+						<dt></dt>
+						<dd>Software engineer interested in mobile application development.<br/>
+							I have several popular applications released at Play Store and a few<br/>
+							open source libraries available on Github.<br/><br/>
+
+							My most notable apps include Calculator++, a scientific calculator with<br>
+							swipe gestures, and Lexin, an online Swedish-English dictionary.<br/>
+							Two popular open source libraries developed by me are Checkout and<br/>
+							Linear Layout Manager.<br/><br/>
+
+							Though now I spend most of my time in mobile application developed,<br/>
+							I worked for 4 years in Java Enterprise and have some experience in this<br/>
+							area.
+						</dd>
+					</dl>
+				</div>
+
 				<h2>Work</h2>
 
 				<div class="left">
@@ -179,8 +196,6 @@
 					<dl>
 						<dt>Github repo</dt>
 						<dd><a target="_blank" href="https://github.com/serso">github.com/serso</a></dd>
-					</dl>
-					<dl>
 						<dt>Play Store apps</dt>
 						<dd><a target="_blank" href="https://play.google.com/store/apps/developer?id=Sergey+Solovyev">link</a></dd>
 					</dl>
