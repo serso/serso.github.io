@@ -23,12 +23,11 @@ div#se_solovyev_img {
 }
 
 a:hover {
-	text-decoration: underline;
 }
 
 a {
 	outline: 0;
-	text-decoration: none;
+	text-decoration: underline;
 }
 
 a, a:visited {
