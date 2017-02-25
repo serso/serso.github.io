@@ -6,55 +6,7 @@
 
 	<title>se.solovyev - CV</title>
 
-	<script type="text/javascript" src="resources/js/jquery-1.6.1.js"></script>
-	<script type="text/javascript" src="resources/js/jquery.countdown.package-1.5.9/jquery.countdown.pack.js"></script>
-
 	<script type="text/javascript">
-		if (jQuery) {
-			$(document).ready(function() {
-
-				$(".slided_content").hide();
-
-				$("a.slided").click(
-						function(event) {
-
-							// Prevent the default event.
-							event.preventDefault();
-
-
-							var nextSibling = $(this).next();
-
-							// Toggle the slide based on its current
-							// visibility.
-							if (nextSibling.is(":visible")) {
-
-								// Hide - slide up.
-								nextSibling.slideUp(500);
-
-							} else {
-
-								// Show - slide down.
-								nextSibling.slideDown(500);
-
-							}
-						}
-						);
-
-				if ($.countdown) {
-					$('#my_age').countdown(
-					{	since: new Date(1988, 4 - 1, 03),
-						format: 'Y',
-						layout: '{y<}{yn} {yl}{y>}'});
-				}
-			});
-		}
-
-
-
-	</script>
-
-	<script type="text/javascript">
-
 		var _gaq = _gaq || [];
 		_gaq.push(['_setAccount', 'UA-24192724-1']);
 		_gaq.push(['_trackPageview']);
@@ -67,16 +19,10 @@
 			var s = document.getElementsByTagName('script')[0];
 			s.parentNode.insertBefore(ga, s);
 		})();
-
-
-
 	</script>
 
-	<link rel="stylesheet" href="resources/js/jquery.countdown.package-1.5.9/jquery.countdown.css"/>
 	<link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Crimson+Text:regular,600&v1' type='text/css'>
-
 	<link rel="stylesheet" href="resources/css/main.css" type="text/css"/>
-
 	<link rel="shortcut icon" href="resources/images/favicon.ico" type="image/x-icon"/>
 
 </head>
@@ -107,7 +53,7 @@
 						<dd>se.solovyev, serso</dd>
 
 						<dt>Age</dt>
-						<dd><span id="my_age"><noscript>28</noscript></span> (03.09.1988)</dd>
+						<dd>29 (03.09.1988)</dd>
 
 						<dt>Sex</dt>
 						<dd>Male</dd>
