@@ -4,3 +4,8 @@ RewriteRule ^ http://se.solovyev.org%{REQUEST_URI} [R=301,L]
 
 RewriteCond %{REQUEST_FILENAME}.html -f
 RewriteRule !.*\.html$ %{REQUEST_FILENAME}.html [L]
+
+# One month for most static assets
+<filesMatch ".(css|jpg|jpeg|png|gif|js|ico)$">
+Header set Cache-Control "max-age=2628000, public"
+</filesMatch>
