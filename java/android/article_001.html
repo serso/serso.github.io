@@ -1,0 +1,400 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>se.solovyev - CV</title>
+
+    <script type="text/javascript" src="/resources/js/jquery-1.6.1.js"></script>
+    <script type="text/javascript" src="/resources/js/jquery.countdown.package-1.5.9/jquery.countdown.pack.js"></script>
+    <script type="text/javascript" src="/resources/js/syntaxhighlighter/shCore.js"></script>
+    <script type="text/javascript" src="/resources/js/syntaxhighlighter/shBrushXml.js"></script>
+    <script type="text/javascript" src="/resources/js/syntaxhighlighter/shBrushJava.js"></script>
+
+    <script type="text/javascript">
+        if (jQuery) {
+            $(document).ready(function () {
+                // syntax highlighting
+                SyntaxHighlighter.all()
+
+                // slided content
+                $(".slided_content").hide();
+
+                $("a.slided").click(
+                        function (event) {
+
+                            // Prevent the default event.
+                            event.preventDefault();
+
+
+                            var nextSibling = $(this).next();
+
+                            // Toggle the slide based on its current
+                            // visibility.
+                            if (nextSibling.is(":visible")) {
+
+                                // Hide - slide up.
+                                nextSibling.slideUp(500);
+
+                            } else {
+
+                                // Show - slide down.
+                                nextSibling.slideDown(500);
+
+                            }
+                        }
+                );
+            });
+        }
+
+    </script>
+
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-24192724-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+
+    </script>
+
+    <link rel="stylesheet" href="/resources/js/jquery.countdown.package-1.5.9/jquery.countdown.css"/>
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Crimson+Text:regular,600&v1' type='text/css'>
+
+    <link rel="stylesheet" href="/resources/css/main.css" type="text/css"/>
+    <link rel="stylesheet" href="/resources/css/syntaxhighlighter/shCore.css" type="text/css"/>
+    <link rel="stylesheet" href="/resources/css/syntaxhighlighter/shCoreDefault.css" type="text/css"/>
+
+    <link rel="shortcut icon" href="/resources/images/favicon.ico" type="image/x-icon"/>
+
+</head>
+<body>
+
+<div id="page">
+<div id="container">
+<div id="header">
+    <div id="se_solovyev_img">
+        <a href="/" class="nohover">
+            <img src="/resources/images/header.png" alt="se.solovyev" height="202" width="879" border="0">
+        </a>
+    </div>
+</div>
+<div id="center">
+<div id="content">
+
+<h2>Do you really need a Service in Android?</h2>
+
+<h3>Contents</h3>
+
+<div class="left">
+
+    <dl>
+
+        <dt>1.</dt>
+        <dd><a href="#introduction">Introduction</a></dd>
+
+        <dt>2.</dt>
+        <dd><a href="#problem">Problem and possible solutions</a></dd>
+
+        <dt>3.</dt>
+        <dd><a href="#solution">Solution</a></dd>
+
+    </dl>
+</div>
+
+<h3><span id="introduction">Introduction</span></h3>
+
+<div class="left">
+    <dl>
+
+        <dt></dt>
+        <dd>
+            I've been developing Android apps for quite a long time and one question has always been
+            eating me: when and why do I need to use <span
+                class="source_link">android.app.Service</span>?
+            The question might be simple at first glance but is more complicated after detailed examine.
+        </dd>
+    </dl>
+</div>
+
+<h3><span id="problem">Problem and possible solutions</span></h3>
+
+<div class="left">
+    <dl>
+
+        <dt></dt>
+        <dd>
+            Let's say that we want to create an app with some heavy background work, e.g. messenger or
+            image gallery. For messenger background work is to communicate with remote service
+            (send and receive messages), for image gallery - to download images (as we know from ICS
+            this work must not be done on main app thread as it will cause crash).
+            How can we implement this? Obvious solutions are:
+            <ol>
+                <li>Using <span class="source_link">android.os.AsyncTask</span></li>
+                <li>Using <span class="source_link">android.app.Service</span></li>
+                <li>Writing own solution - manual thread management (Threads, ExecutorServices, etc)
+                </li>
+            </ol>
+            Of course the experienced developer immediately says: AsyncTask is not designed for long operations. And he
+            is correct, here is the
+            part of documentation for AsyncTask (<a
+                href="http://developer.android.com/reference/android/os/AsyncTask.html">source</a>):<br/>
+            <br/>
+                            <span class="documentation">
+                                AsyncTask is designed to be a helper class around Thread and Handler and does not constitute a generic threading framework. AsyncTasks should ideally be used for short operations (a few seconds at the most.) If you need to keep threads running for long periods of time, it is highly recommended you use the various APIs provided by the java.util.concurrent pacakge such as Executor, ThreadPoolExecutor and FutureTask.
+                            </span>
+            <br/>
+            <br/>
+            OK, first solution is bad, what else do we have:
+            <ol>
+                <li><span style="text-decoration: line-through">Using <span
+                        class="source_link">android.os.AsyncTask</span></span></li>
+                <li>Using <span class="source_link">android.app.Service</span></li>
+                <li>Writing own solution - manual thread management (Threads, ExecutorServices, etc)
+                </li>
+            </ol>
+            Let's read documentation for <span class="source_link">android.app.Service</span> (<a
+                href="http://developer.android.com/reference/android/app/Service.html">source</a>):
+            <br/>
+            <br/>
+                            <span class="documentation">
+                                A Service is an application component representing either an application's desire to perform a longer-running operation while not interacting with the user or to supply functionality for other applications to use
+                            </span>
+            <br/>
+            <br/>
+            That's what we were looking for - long running operations in background. Cool, let's start to code:
+                            <pre class="brush: java">
+public final class DownloadImageService extends Service {
+
+    @Override
+    public IBinder onBind(Intent intent) {
+        return null;
+    }
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+
+        // initialization logic
+    }
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        return super.onStartCommand(intent, flags, startId);
+
+        // start logic
+    }
+}
+                            </pre>
+            Let's say we need to load some data (e.g. images from remote server):
+                            <pre class="brush: java">
+
+    @Nonnull
+    private static final String EXTRA_URL = "url";
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        int result = super.onStartCommand(intent, flags, startId);
+        downloadImage(intent.getStringExtra(EXTRA_URL));
+        return result;
+    }
+
+    private void downloadImage(@Nonnull String url) {
+        // downloading
+    }
+                            </pre>
+            Compile, package, start - bump - <span class="source_link">android.os.NetworkOnMainThreadException</span>.
+            WTF?
+            It turns out that Android service is working on the main application thread (<a
+                href="http://developer.android.com/reference/android/app/Service.html">source</a>):
+            <br/>
+            <br/>
+                            <span class="documentation">
+                                Note that services, like other application objects, run in the main thread of their hosting process.
+                            </span>
+            <br/>
+            <br/>
+            OK, then we need to create a manual background thread management class and use it inside the service...
+            Stop. But why do we need service after all?
+            It's much easier to communicate to the local class, we can use callbacks/listeners with local class and we
+            cannot use it all with service.
+            Service binding takes some time and if we want to use local service we need to wait until it will be bound
+            which makes code less clean.
+            Service only accepts input which is parcelable (as we need to put in into Intent (for remote service) or use
+            AIDL (for local service)).
+            And we've come to a conclusion that only one right way of implementing background task is to create own
+            solution
+            (as Android doesn't provide it out of the box):
+            <ol>
+                <li><span style="text-decoration: line-through">Using <span
+                        class="source_link">android.os.AsyncTask</span></span></li>
+                <li><span style="text-decoration: line-through">Using <span
+                        class="source_link">android.app.Service</span></span></li>
+                <li>Writing own solution - manual thread management (Threads, ExecutorServices, etc)
+                </li>
+            </ol>
+
+            Summarizing everything above:
+            <ol>
+                <li>Android Service doesn't help you to create background task</li>
+                <li>Most probably you don't need Service at all</li>
+                <li>Sometimes documentation is misleading and you should not always rely on it</li>
+            </ol>
+        </dd>
+    </dl>
+</div>
+
+<h3><span id="solution">Solution</span></h3>
+
+<div class="left">
+    <dl>
+
+        <dt></dt>
+        <dd>
+            I can suggest next solution (included in <a href="https://github.com/serso/android-common">Android Common
+            Library</a>):
+                            <pre class="brush: java">
+ /**
+ * Service allows user to run background tasks.
+ * &lt;p/&gt;
+ * &lt;p/&gt;
+ * Implementation note: class implementing current interface must be thread safe.
+ * Implementation class must guarantee task execution (delayed execution is allowed if for example too many tasks are working simultaneously).
+ * Usually,
+ */
+@ThreadSafe
+public interface TaskService {
+
+    /**
+    * Method tries to run specified &lt;var&gt;task&lt;/var&gt;. Task might not be executed if task with the same &lt;var&gt;taskName&lt;/var&gt; is already running (or is waiting in queue).
+    * There is no guarantee that task will be finished (task might be cancelled via {@link TaskService#tryCancel(java.lang.String)}).
+    * The result will be published through {@link com.google.common.util.concurrent.FutureCallback#onSuccess(V)} or {@link com.google.common.util.concurrent.FutureCallback#onFailure(java.lang.Throwable)} methods
+    *
+    * @param taskName     task identification
+    * @param task         task to be run
+    * @param taskListener result listener
+    * @param &lt;T&gt;          type of result
+    * @throws TaskIsAlreadyRunningException if task with the same &lt;var&gt;taskName&lt;/var&gt; is already running
+    */
+    &lt;T&gt; void tryRun(@Nonnull String taskName, @Nonnull Callable&lt;T&gt; task, @Nullable FutureCallback&lt;T&gt; taskListener) throws TaskIsAlreadyRunningException;
+
+    /**
+    * @see TaskService#tryRun(java.lang.String, java.util.concurrent.Callable&lt;T&gt;, com.google.common.util.concurrent.FutureCallback&lt;T&gt;)
+    */
+    &lt;T&gt; void tryRun(@Nonnull String taskName, @Nonnull Callable&lt;T&gt; task) throws TaskIsAlreadyRunningException;
+
+    /**
+    * @see TaskService#tryRun(java.lang.String, java.util.concurrent.Callable&lt;T&gt;, com.google.common.util.concurrent.FutureCallback&lt;T&gt;)
+    */
+    &lt;T&gt; void tryRun(@Nonnull String taskName, @Nonnull Task&lt;T&gt; task) throws TaskIsAlreadyRunningException;
+
+    /**
+    * @see TaskService#tryRun(java.lang.String, java.util.concurrent.Callable&lt;T&gt;, com.google.common.util.concurrent.FutureCallback&lt;T&gt;)
+    */
+    &lt;T&gt; void tryRun(@Nonnull NamedTask&lt;T&gt; task) throws TaskIsAlreadyRunningException;
+
+    /**
+    * Method runs specified &lt;var&gt;task&lt;/var&gt;. If task with the same &lt;var&gt;taskName&lt;/var&gt; is already running (or is waiting in queue) it will be cancelled.
+    *
+    * @param taskName     task identification
+    * @param task         task to be run
+    * @param taskListener result listener
+    * @param &lt;T&gt;          type of result
+    */
+    &lt;T&gt; void run(@Nonnull String taskName, @Nonnull Callable&lt;T&gt; task, @Nullable FutureCallback&lt;T&gt; taskListener);
+
+    /**
+    * @see TaskService#run(java.lang.String, java.util.concurrent.Callable&lt;T&gt;, com.google.common.util.concurrent.FutureCallback&lt;T&gt;)
+    */
+    &lt;T&gt; void run(@Nonnull String taskName, @Nonnull Callable&lt;T&gt; task);
+
+    /**
+    * @see TaskService#run(java.lang.String, java.util.concurrent.Callable&lt;T&gt;, com.google.common.util.concurrent.FutureCallback&lt;T&gt;)
+    */
+    &lt;T&gt; void run(@Nonnull String taskName, @Nonnull Task&lt;T&gt; task);
+
+    /**
+    * @see TaskService#run(java.lang.String, java.util.concurrent.Callable&lt;T&gt;, com.google.common.util.concurrent.FutureCallback&lt;T&gt;)
+    */
+    &lt;T&gt; void run(@Nonnull NamedTask&lt;T&gt; task);
+
+    /**
+    * Method tries to cancel task.
+    *
+    * @param taskName name of the task to be cancelled
+    * @throws NoSuchTaskException If no task with specified &lt;var&gt;taskName&lt;/var&gt; is running
+    * @throws TaskFinishedException If task with specified &lt;var&gt;taskName&lt;/var&gt; has already been finished
+    */
+    void tryCancel(@Nonnull String taskName) throws NoSuchTaskException, TaskFinishedException;
+
+    /**
+    * Method cancels task, If no task is running or task has already been finished nothing happens.
+    *
+    * @param taskName task name to be cancelled
+    * @return true if task was canceled by this method call, false otherwise
+    */
+    boolean cancel(@Nonnull String taskName);
+
+    /**
+    * Method checks if task with specified &lt;var&gt;taskName&lt;/var&gt; is running (or waiting in the queue if any)
+    *
+    * @param taskName name of the task
+    *
+    * @return true if task is running (or waiting in the queue if any), false either if task has not been scheduled for execution or has already been finished
+    */
+    boolean isRunning(@Nonnull String taskName);
+
+    /**
+    * Method checks if task with specified &lt;var&gt;taskName&lt;/var&gt; has already been finished, i.e. that task already has been started and finished.
+    *
+    * @param taskName name of the task
+    *
+    * @return true if task has already been finished, false otherwise
+    */
+    boolean isDone(@Nonnull String taskName);
+
+    /**
+    * Method tries to add task result listener (&lt;var&gt;taskListener&lt;/var&gt;) to the task with specified &lt;var&gt;taskName&lt;/var&gt;.
+    *
+    * @param taskName name of the task
+    * @param taskListener result listener
+    * @param &lt;T&gt; type of the result
+    * @throws NoSuchTaskException If no task with specified &lt;var&gt;taskName&lt;/var&gt; is running
+    * @throws TaskFinishedException If task with specified &lt;var&gt;taskName&lt;/var&gt; has already been finished
+    */
+    &lt;T&gt; void tryAddTaskListener(@Nonnull String taskName, @Nonnull FutureCallback&lt;T&gt; taskListener) throws NoSuchTaskException, TaskFinishedException;
+
+    /**
+    * Method tries to add task result listener (&lt;var&gt;taskListener&lt;/var&gt;) to the task with specified &lt;var&gt;taskName&lt;/var&gt;.
+    * If no task is running or if task has already been finished nothing happens.
+    *
+    * @param taskName name of the task
+    * @param taskListener result listener
+    * @param &lt;T&gt; type of the result
+    *
+    * @return true if result listener has been added, false otherwise
+    */
+    &lt;T&gt; boolean addTaskListener(@Nonnull String taskName, @Nonnull FutureCallback&lt;T&gt; taskListener);
+}</pre>
+
+        </dd>
+    </dl>
+</div>
+
+</div>
+</div>
+<div id="footer">
+    <a href="/">se.solovyev</a>, 2013
+</div>
+</div>
+</div>
+
+</body>
+</html>
